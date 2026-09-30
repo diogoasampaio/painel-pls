@@ -52,4 +52,11 @@ db.pls_form_valores.createIndex({ indicador_id: 1, ano: 1, registrado_em: -1 });
 db.pls_form_acessos.createIndex({ hash: 1 }, { unique: true });
 db.pls_form_acessos.createIndex({ setor: 1 }, { unique: true });
 
+// colecoes do nucleo ampliado, das quantidades adquiridas e dos pedidos do AVN
+db.pls_execucao.createIndex({ chave: 1, nivel: 1, ano: 1 });
+db.pls_metas.createIndex({ indicador_id: 1, ano: 1 });
+db.pls_itens_quantidade.createIndex({ ano: 1, familia: 1 });
+db.pls_avn_itens.createIndex({ ano: 1 });
+db.pls_avn_itens.createIndex({ pedido: 1 });
+
 print("Usuarios e indices criados. Atualize MONGO_URI nos .env do backend (api_user) e do ETL (etl_user).");

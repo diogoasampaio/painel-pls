@@ -17,6 +17,8 @@ ETL (systemd timer, mensal) ─readWrite─> MongoDB painel_pls
 | [pls_ufpb-backend](pls_ufpb-backend/README.md) | FastAPI somente leitura; painéis declarados em `app/panels.py` |
 | [pls_ufpb-frontend](pls_ufpb-frontend/README.md) | Next.js + Recharts |
 
+Implantação nas máquinas virtuais (VM A aplicação, VM B banco): [DEPLOY.md](DEPLOY.md).
+
 ## Módulo PLS: fatia vertical
 
 ```
