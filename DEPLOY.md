@@ -51,12 +51,13 @@ Cria `etl_user` e `api_user` e os índices usados pela API.
 
 ## 3. Código (VM A)
 
-Repositório privado `codeinfo-ufpb/painel-pls`. Na VM, use uma **deploy key somente leitura**
+Repositório privado `diogoasampaio/painel-pls` (se for transferido para a organização `codeinfo-ufpb`, troque
+o endereço abaixo). Na VM, use uma **deploy key somente leitura**
 (GitHub → Settings → Deploy keys), não a chave pessoal de ninguém.
 
 ```bash
 sudo mkdir -p /opt/painel-pls && sudo chown codeinfo: /opt/painel-pls
-sudo -u codeinfo git clone git@github.com:codeinfo-ufpb/painel-pls.git /opt/painel-pls/src
+sudo -u codeinfo git clone git@github.com:diogoasampaio/painel-pls.git /opt/painel-pls/src
 
 # caminhos que os arquivos de serviço (deploy/*.service) esperam
 sudo ln -s /opt/painel-pls/src/pls_ufpb-backend  /opt/painel-pls/backend
