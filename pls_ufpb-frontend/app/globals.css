@@ -1,0 +1,348 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/*
+ * Tokens do LEMA-DS (https://ds.lema.ufpb.br): base neutra (:root/.dark) + tema
+ * .blue aplicado no <html>. Semânticos (success, warning, risk-*, highlight-*)
+ * do item @lema-ds/tokens. O CSS legado do painel, mais abaixo, usa os mesmos
+ * tokens (var(--primary), var(--success)...) até cada tela migrar para ds-*.
+ */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-chart-7: var(--chart-7);
+  --color-chart-8: var(--chart-8);
+  --color-chart-9: var(--chart-9);
+  --color-chart-10: var(--chart-10);
+  --color-risk-1: var(--risk-1);
+  --color-risk-2: var(--risk-2);
+  --color-risk-3: var(--risk-3);
+  --color-risk-4: var(--risk-4);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-highlight-violet: var(--highlight-violet);
+  --color-highlight-violet-foreground: var(--highlight-violet-foreground);
+  --color-highlight-sky: var(--highlight-sky);
+  --color-highlight-sky-foreground: var(--highlight-sky-foreground);
+  --color-highlight-white: var(--highlight-white);
+  --color-highlight-white-foreground: var(--highlight-white-foreground);
+  --color-ufpb-azul: var(--ufpb-azul);
+  --color-ufpb-ouro: var(--ufpb-ouro);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* Rawline: Padrão Mínimo do Design System de Governo (uma família só, como pede o DS) */
+  --font-sans: Rawline, Raleway, ui-sans-serif, system-ui, sans-serif;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.48 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.55 0.12 260);
+  --chart-2: oklch(0.6 0.14 30);
+  --chart-3: oklch(0.65 0.1 140);
+  --chart-4: oklch(0.5 0.11 290);
+  --chart-5: oklch(0.55 0.09 190);
+  /* extensão do painel: o DS só tem 5 cores de gráfico e o painel empilha até 10 séries */
+  --chart-6: oklch(0.58 0.15 350);
+  --chart-7: oklch(0.72 0.13 95);
+  --chart-8: oklch(0.5 0.09 55);
+  --chart-9: oklch(0.6 0.03 250);
+  --chart-10: oklch(0.45 0.08 170);
+  --risk-1: oklch(0.62 0.19 28);
+  --risk-2: oklch(0.72 0.17 50);
+  --risk-3: oklch(0.85 0.18 85);
+  --risk-4: oklch(0.92 0.15 105);
+  --success: oklch(0.55 0.17 155);
+  --success-foreground: oklch(0.98 0 0);
+  --warning: oklch(0.75 0.18 75);
+  --warning-foreground: oklch(0.145 0 0);
+  --highlight-violet: oklch(0.55 0.22 290);
+  --highlight-violet-foreground: oklch(0.98 0 0);
+  --highlight-sky: oklch(0.58 0.18 240);
+  --highlight-sky-foreground: oklch(0.98 0 0);
+  --highlight-white: oklch(1 0 0);
+  --highlight-white-foreground: oklch(0.145 0 0);
+  --radius: 0.625rem;
+
+  /* legado do painel: tipografia fluida e sombra dos cards antigos */
+  --shadow-sm: 0 1px 2px oklch(0.145 0 0 / 0.05), 0 1px 6px oklch(0.145 0 0 / 0.04);
+  --text-page-title: clamp(1.75rem, 1.5rem + 1vw, 2.125rem);
+  --text-section-title: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+  --text-kpi: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+  --text-caption: 0.8125rem;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.65 0.12 260);
+  --chart-2: oklch(0.7 0.14 30);
+  --chart-3: oklch(0.75 0.1 140);
+  --chart-4: oklch(0.6 0.11 290);
+  --chart-5: oklch(0.65 0.09 190);
+  --chart-6: oklch(0.68 0.15 350);
+  --chart-7: oklch(0.8 0.13 95);
+  --chart-8: oklch(0.62 0.09 55);
+  --chart-9: oklch(0.7 0.03 250);
+  --chart-10: oklch(0.58 0.08 170);
+  --risk-1: oklch(0.55 0.15 28);
+  --risk-2: oklch(0.65 0.13 50);
+  --risk-3: oklch(0.75 0.14 85);
+  --risk-4: oklch(0.82 0.12 105);
+  --success: oklch(0.72 0.17 155);
+  --success-foreground: oklch(0.145 0 0);
+  --warning: oklch(0.80 0.18 75);
+  --warning-foreground: oklch(0.145 0 0);
+  --highlight-violet: oklch(0.48 0.20 290);
+  --highlight-violet-foreground: oklch(0.98 0 0);
+  --highlight-sky: oklch(0.52 0.16 240);
+  --highlight-sky-foreground: oklch(0.98 0 0);
+  --highlight-white: oklch(1 0 0);
+  --highlight-white-foreground: oklch(0.145 0 0);
+}
+
+/*
+ * Temas do LEMA-DS (blue, green, violet) e o da UFPB: a classe vai no <html>
+ * e é escolhida por projeto (TEMA_DS no .env, lib/tema.ts). Sem classe = neutro. Nenhum tema sobrescreve
+ * --chart-*: as séries do painel são categorias empilhadas (até 10) e precisam
+ * de matizes distintos -- vale a paleta multicolor da base (+ chart-6..10).
+ */
+.blue {
+  --primary: oklch(0.5 0.2 255);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.9 0.05 240);
+  --secondary-foreground: oklch(0.25 0.08 250);
+  --accent: oklch(0.9 0.05 240);
+  --accent-foreground: oklch(0.25 0.08 250);
+  --ring: oklch(0.5 0.2 255);
+}
+
+.green {
+  --primary: oklch(0.48 0.18 155);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.9 0.05 150);
+  --secondary-foreground: oklch(0.25 0.08 155);
+  --accent: oklch(0.9 0.05 150);
+  --accent-foreground: oklch(0.25 0.08 155);
+  --ring: oklch(0.48 0.18 155);
+}
+
+.violet {
+  --primary: oklch(0.52 0.24 295);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.91 0.05 295);
+  --secondary-foreground: oklch(0.25 0.08 295);
+  --accent: oklch(0.91 0.05 295);
+  --accent-foreground: oklch(0.25 0.08 295);
+  --ring: oklch(0.52 0.24 295);
+}
+
+/*
+ * Tema UFPB (padrão deste painel): cores do brasão -- azul do escudo como
+ * primary, azul-claro nas superfícies de apoio e o ouro da flor-de-lis como
+ * acento (filete do cabeçalho, --ufpb-ouro). Valores aproximados do brasão;
+ * trocar pelos do manual de identidade visual da UFPB quando houver.
+ */
+:root {
+  --ufpb-azul: oklch(0.44 0.14 260);
+  --ufpb-ouro: oklch(0.83 0.14 85);
+}
+.ufpb {
+  --primary: var(--ufpb-azul);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.93 0.03 258);
+  --secondary-foreground: oklch(0.3 0.1 260);
+  --accent: oklch(0.93 0.03 258);
+  --accent-foreground: oklch(0.3 0.1 260);
+  --ring: var(--ufpb-azul);
+}
+.dark.ufpb, .ufpb .dark {
+  --primary: oklch(0.63 0.12 257);
+  --primary-foreground: oklch(0.145 0 0);
+}
+
+/*
+ * PLS: gasto, consumo e emissão -- cair é o resultado desejado. O ds-card-stat
+ * pinta "down" de text-destructive e "up" de text-success, sem opção de
+ * polaridade; dentro de .polaridade-menor-melhor os dois tokens trocam de papel
+ * (sem editar o componente instalado). Lacuna a propor no LEMA-DS.
+ */
+:root {
+  --tom-bom: var(--success);
+  --tom-ruim: var(--destructive);
+}
+.polaridade-menor-melhor {
+  --success: var(--tom-ruim);
+  --destructive: var(--tom-bom);
+}
+/* gasto sem sentido desejado (vigilância, alimentação, treinamento): alta e queda sem cor de juízo */
+.polaridade-neutra {
+  --success: var(--muted-foreground);
+  --destructive: var(--muted-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+
+  /* Telas ainda não migradas: devolve o padrão do navegador que o preflight do
+     Tailwind zera, só dentro de .container (telas antigas) e fora dos componentes
+     do DS (que marcam data-slot). */
+  :where(.container) :where(h1, h2, h3, h4):not([data-slot] *) { font-weight: 700; }
+  :where(.container) :where(p, ul, ol, dl, details, table):not([data-slot] *) { margin-block: 1em; }
+  :where(.container) :where(ul):not([data-slot] *) { list-style: disc; padding-left: 1.25rem; }
+  :where(.container) :where(ol):not([data-slot] *) { list-style: decimal; padding-left: 1.25rem; }
+  :where(.container) :where(th):not([data-slot] *) { font-weight: 700; }
+  :where(b, strong) { font-weight: 700; }
+  /* na camada base (e não solta no legado) para o botão-link do DS poder mudar a cor */
+  a { color: var(--primary); }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+}
+
+/*
+ * Hero da Visão geral (components/HeroSustentabilidade.tsx): cena escura nos
+ * dois temas, do verde da sustentabilidade ao azul do brasão da UFPB. O texto
+ * branco tem contraste >= 7:1 em todo o gradiente.
+ */
+.hero-sust {
+  --hero-verde: oklch(0.36 0.09 165);
+  --hero-azul: oklch(0.3 0.1 258);
+  --hero-sol: oklch(0.86 0.14 95);
+  --hero-destaque: oklch(0.88 0.16 145);
+  background:
+    radial-gradient(90% 70% at 15% 0%, oklch(0.45 0.11 160 / 0.9), transparent 60%),
+    linear-gradient(135deg, var(--hero-verde) 0%, oklch(0.33 0.08 200) 50%, var(--hero-azul) 100%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-folha { animation: hero-balanco 9s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 0 50%; }
+  .hero-folha-2 { animation-duration: 12s; animation-delay: -4s; }
+}
+@keyframes hero-balanco {
+  from { rotate: -2deg; }
+  to { rotate: 3deg; }
+}
+
+/* ── CSS legado do painel: migrar tela a tela para ds-* ── */
+
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 0.9375rem; }
+
+.container { max-width: 1120px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+
+.page-title { font-size: var(--text-page-title); margin: 0 0 0.75rem; }
+.section-title { font-size: var(--text-section-title); margin: 0 0 0.75rem; }
+.caption { font-size: var(--text-caption); color: var(--muted-foreground); }
+.fonte { margin-top: 2rem; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+
+
+/* cartões dos formulários (ainda legados) */
+.meta-topo { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+.meta-titulo { font-size: 1rem; margin: 0.35rem 0; }
+.selo { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 999px; font-size: var(--text-caption); font-weight: 600; border: 1px solid var(--border); }
+details:not([data-slot] *) summary { cursor: pointer; margin-top: 0.35rem; }
+
+/* formularios */
+.form { display: grid; gap: 0.35rem; margin-top: 0.75rem; max-width: 640px; }
+.form label { font-weight: 600; margin-top: 0.4rem; }
+.form input, .form select, .form textarea {
+  font: inherit; padding: 0.45rem 0.6rem; border: 1px solid var(--border); border-radius: 0.5rem; background: var(--card); color: inherit;
+}
+.form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+.form button, .botao-secundario {
+  justify-self: start; margin-top: 0.6rem; padding: 0.5rem 1.1rem; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer;
+  border: 1px solid var(--primary); background: var(--primary); color: var(--primary-foreground);
+}
+.botao-secundario { background: transparent; color: var(--primary); margin-top: 0; }
+.form button:disabled { opacity: 0.6; cursor: wait; }
+.msg { margin: 0.5rem 0 0; font-size: var(--text-caption); font-weight: 600; }
+.msg-erro { color: var(--destructive); }
+.msg-ok { color: var(--success); }
+@media (max-width: 480px) { .form { max-width: 100%; } }

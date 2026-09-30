@@ -1,0 +1,62 @@
+codigo;frente;melhoria;responsavel;prioridade
+N01;Dado;Validar a área construída por prédio e campus em cadastro oficial (SPIUnet ou levantamento da SINFRA) e registrar a data de cada atualização, porque todo indicador por m² depende dela.;SINFRA;Alta
+N01;Dado;Somar a geração das usinas fotovoltaicas próprias para medir o consumo total, e não só o consumo da rede: hoje uma nova usina reduz o indicador sem que o consumo caia.;SINFRA;Alta
+N01;Método;Separar prédios com uso intensivo (hospital veterinário, laboratórios, data center) ou calcular também por campus, para que a comparação entre anos não mude com a abertura de um laboratório.;SINFRA/Comissão;Média
+N01;Método;Publicar ao lado o consumo ajustado por graus-dia de refrigeração (temperatura média do mês), já que o ar-condicionado domina o consumo em João Pessoa.;Equipe do painel;Baixa
+N01;Meta;Fixar a meta de redução anual (o PLS já cita −2,5% ao ano no consumo) em kWh/m², com 2024 como ano-base.;Comissão;Alta
+N02;Dado;Explicar a queda de ≈ 12 mil para ≈ 1 mil m³/mês na ligação principal do Campus I (726486) em 2025, antes de usar a meta como atingida: trocar ou aferir o hidrômetro e checar poço ou nova fonte.;SINFRA;Alta
+N02;Dado;Registrar as fontes de água sem fatura da CAGEPA (poços, açudes, caminhão-pipa), sobretudo no Campus III, que quase não aparece nas faturas.;SINFRA;Alta
+N02;Método;Usar como denominador a população presencial (matrículas presenciais + servidores), já que estudantes a distância não consomem água nos campi (o painel já tem matriculas_presencial do INEP).;Equipe do painel/Comissão;Média
+N02;Automação;Instalar os hidrômetros por edificação previstos na ação T16-02 e integrá-los ao painel para ver onde está o consumo e achar vazamentos.;SINFRA;Média
+N03;Método;Publicar também as emissões do escopo 2 pela abordagem de escolha de compra (market-based) se a UFPB contratar energia com certificado de origem renovável, ao lado da abordagem por localização (fator do SIN).;SINFRA/Comissão;Baixa
+N03;Dado;Pedir à gerenciadora de frota que anexe sempre o relatório de abastecimentos ao processo: em jun–ago/2024 só havia a NF, que dá o total por combustível sem placa nem campus.;Superintendência de Transportes;Baixa
+N03;Método;Completar o inventário: gases refrigerantes dos aparelhos de ar-condicionado (recarga registrada nos contratos de manutenção), resíduos, efluentes e geradores a diesel.;SINFRA/Comissão;Média
+N03;Método;Incluir CH₄ e N₂O da combustão móvel e passar a publicar a emissão por escopo e por pessoa, para comparação com outras universidades.;Equipe do painel;Baixa
+N03;Meta;Definir a meta de redução com base em 2024, junto com o plano de redução de emissões.;Comissão;Alta
+N04;Dado;Pesar e registrar os resíduos recicláveis e os resíduos comuns (coleta municipal e cooperativas), para medir a geração total e a parcela desviada do aterro.;SINFRA/GMA;Alta
+N04;Dado;Contratar ou formalizar coleta no Campus IV, hoje sem coleta de resíduos perigosos contratada.;SINFRA;Alta
+N04;Método;Dividir o indicador em dois: resíduos perigosos destinados (controle legal) e taxa de reciclagem (reciclável ÷ total gerado), que é o que mostra avanço ambiental.;Comissão;Média
+N04;Método;Normalizar por pessoa ou por m² para comparar anos com mudança de atividade.;Equipe do painel;Baixa
+N04;Gestão;Firmar termo com cooperativa de catadores (Decreto 5.940/2006) e exigir relatório mensal com pesagem.;Reitoria/CGA;Alta
+N05;Método;Publicar a composição do custo (energia, água, limpeza, manutenção) ao lado do total, para saber qual parcela puxou a variação.;Equipe do painel;Média
+N05;Método;Separar o efeito preço do efeito consumo: comparar com o consumo físico (kWh, m³) e com o reajuste dos contratos de limpeza.;Equipe do painel;Média
+N05;Dado;Incluir vigilância e outros serviços de funcionamento predial, se a Comissão decidir que fazem parte do custo de manter os espaços.;Comissão;Baixa
+N05;Meta;Fixar meta de redução real (acima da inflação) sobre 2024.;Comissão;Média
+N06;Método;Separar manutenção preventiva de corretiva (pelo contrato ou pela ordem de serviço), porque gasto preventivo alto é desejável.;SINFRA;Média
+N06;Dado;Relacionar o gasto ao estado dos prédios (idade, área em uso, laudos) para distinguir economia de manutenção adiada.;SINFRA;Baixa
+N06;Meta;Manter como indicador de acompanhamento: uma meta de redução pode incentivar adiar manutenção.;Comissão;Baixa
+N07;Dado;Pedir à gerenciadora que informe o tipo de diesel (S10 ou comum) em todos os abastecimentos: hoje, diesel sem especificação é contado como comum.;Superintendência de Transportes;Alta
+N07;Gestão;Orientar abastecimento com etanol nos veículos flex quando o preço compensar (até 70% do preço da gasolina), com relatório mensal por veículo.;Superintendência de Transportes;Média
+N07;Meta;Fixar percentual mínimo (hoje cerca de 65%).;Comissão;Média
+N08;Automação;Integrar ao painel o monitoramento dos inversores das usinas fotovoltaicas (portal do fabricante ou exportação mensal), para ter a geração mês a mês sem depender de lançamento manual.;SINFRA;Alta
+N08;Dado;Enquanto não houver integração, lançar a geração anual pelo formulário de valores informados do painel, com a evidência (relatório do inversor).;SINFRA;Alta
+N08;Método;Somar a energia injetada na rede e compensada nas faturas (créditos de geração distribuída) quando houver, e separar a geração consumida no próprio campus.;SINFRA/Equipe do painel;Média
+N08;Meta;Fixar percentual mínimo com base nos 3,69% de 2023 e no plano de novas usinas (ação T17-05).;Comissão;Média
+N09;Método;Revisar a regra de texto com uma amostra de itens: medir acertos e falsos positivos, e ampliar os termos (certificações, selos, refil, reciclado, Procel) que ficaram de fora.;Equipe do painel/UASGs;Alta
+N09;Dado;Usar o código CATMAT com atributo de sustentabilidade do catálogo do Compras.gov.br em vez do texto livre do empenho, quando o item vier identificado.;Equipe do painel;Média
+N09;Gestão;Montar o catálogo de materiais sustentáveis da UFPB (ação do eixo 3) e pedir que as UASGs usem os itens do catálogo nas compras.;UASGs;Média
+N09;Meta;Fixar percentual mínimo ou aumento anual sobre a base de cerca de 1%.;Comissão;Média
+N10;Método;Validar a classificação com uma amostra de editais lida por pessoas da PRA/UASGs (acertos, falsos positivos, falsos negativos) e ajustar as regras.;PRA/UASGs;Alta
+N10;Método;Decidir se as cláusulas “preferencialmente” contam como critério: hoje ficam fora do numerador por não obrigarem o fornecedor.;Comissão;Alta
+N10;Dado;Ler também os itens (descrição do CATMAT) e o texto das contratações escaneadas com OCR, que hoje saem da razão.;Equipe do painel;Média
+N10;Gestão;Adotar modelos de TR com critérios concretos por tipo de objeto (Guia Nacional de Contratações Sustentáveis da AGU) e checklist de sustentabilidade na fase interna.;PRA/UASGs;Alta
+N10;Meta;Fixar percentual mínimo após a linha de base de 2025 (67,5% em quantidade).;Comissão;Média
+N11;Método;Separar os três tipos no painel e dar mais peso à participação em IRP (planejamento conjunto) do que à adesão (carona), que é compra oportunista.;Comissão;Média
+N11;Dado;Buscar também as participações da UFPB registradas só no Compras.gov.br (sem contrato no PNCP), para não subestimar as compras de outros órgãos.;Equipe do painel;Média
+N11;Método;Medir também o valor das compras compartilhadas, além da quantidade.;Equipe do painel;Baixa
+N11;Meta;Fixar número mínimo anual, considerando que a lista do PNCP começa em 2023.;Comissão;Média
+N12;Método;Separar os componentes (ME/EPP, fornecedores da Paraíba, agricultura familiar) em indicadores próprios: somados, um contrato grande com empresa local de porte médio mascara a queda nas micro e pequenas.;Comissão;Alta
+N12;Dado;Tratar a agricultura familiar pelo PNAE/PAA (chamadas públicas do RU) e pela DAP/CAF do fornecedor, já que nenhum empenho cita a Lei 12.512.;SRU/UASGs;Alta
+N12;Método;Usar o porte da empresa na data do pagamento (histórico do Simples/MEI) e não só o cadastro atual.;Equipe do painel;Média
+N12;Método;Tratar as fundações de apoio e os repasses a terceiros como categoria à parte, porque o recebedor não é o prestador final.;Comissão;Média
+N12;Meta;Fixar percentual mínimo a partir da linha de base (69% em 2024 e 59% em 2025).;Comissão;Média
+N13;Dado;Trocar a aproximação da EVG pelo dado exato do SIGRH/PROGEP: servidores ativos que concluíram curso de sustentabilidade no ano, de qualquer escola de governo ou curso interno.;PROGEP;Alta
+N13;Método;Enquanto usar a EVG, confirmar o vínculo cruzando o código da pessoa com a lista de servidores (sem expor CPF) e revisar a lista de palavras-chave dos cursos.;PROGEP/Equipe do painel;Média
+N13;Método;Incluir terceirizados e prestadores, como pede o objetivo OB2 do PLS, com denominador próprio.;PROGEP/Comissão;Baixa
+N13;Gestão;Ofertar trilha de sustentabilidade no plano de capacitação e divulgar os cursos da EVG: o resultado de 2025 (0,76%) está longe da meta de 10%.;PROGEP;Alta
+N14;Método;Mostrar o gasto por servidor e a parcela ligada a cursos de sustentabilidade, para relacionar investimento e resultado no N13.;Equipe do painel/PROGEP;Média
+N14;Dado;Incluir capacitações pagas por outras ações (projetos, fundações) para não subestimar o investimento.;PROGEP;Baixa
+N15;Gestão;Fazer valer o ciclo semestral: prazo fixo para os setores preencherem o formulário e cobrança automática por e-mail aos responsáveis.;Comissão;Alta
+N15;Método;Pesar as ações pela relevância (entregas estruturantes pesam mais que rotinas) e exigir evidência verificável para concluir.;Comissão;Média
+N15;Automação;Ampliar as ações verificadas pelos próprios dados do painel (consumo medido, compras, cursos), para depender menos do registro manual.;Equipe do painel;Média
+N15;Meta;Fixar percentual mínimo de ações no prazo por ciclo.;Comissão;Média

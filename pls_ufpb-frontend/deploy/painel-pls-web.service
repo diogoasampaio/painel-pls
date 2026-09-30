@@ -1,0 +1,16 @@
+[Unit]
+Description=Painel PLS UFPB Frontend (Next.js)
+After=network.target painel-pls-api.service
+Wants=painel-pls-api.service
+
+[Service]
+Type=simple
+User=codeinfo
+WorkingDirectory=/opt/painel-pls/frontend
+EnvironmentFile=/opt/painel-pls/frontend/.env
+ExecStart=/usr/bin/npx next start -p 3001
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

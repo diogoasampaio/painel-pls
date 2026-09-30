@@ -1,0 +1,18 @@
+[Unit]
+Description=Painel PLS UFPB API (FastAPI)
+After=network.target
+
+[Service]
+Type=simple
+User=codeinfo
+WorkingDirectory=/opt/painel-pls/backend
+EnvironmentFile=/opt/painel-pls/backend/.env
+ExecStart=/opt/painel-pls/backend/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8001
+Restart=on-failure
+RestartSec=5
+
+# So ouve em 127.0.0.1 -- nunca expor a porta no firewall/Nginx desta VM.
+# O unico cliente e o Next.js, local na mesma maquina.
+
+[Install]
+WantedBy=multi-user.target

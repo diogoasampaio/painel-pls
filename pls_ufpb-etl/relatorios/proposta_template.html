@@ -1,0 +1,355 @@
+<title>Automação das metas do PLS UFPB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+:root {
+  --ground: #f3f6f8;
+  --paper: #ffffff;
+  --ink: #10263d;
+  --ink-2: #4a5d70;
+  --line: #d5dee6;
+  --accent: #0b4f8a;
+  --accent-soft: #e3eef8;
+  --c-auto: #2e7d5b;
+  --c-pub: #1f6fb8;
+  --c-forn: #b0741a;
+  --c-int: #6d5aa8;
+  --c-inf: #8a98a6;
+  --warn-bg: #fff5e0;
+  --warn-ink: #7a4d00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #0e1822;
+    --paper: #15222f;
+    --ink: #e4ecf3;
+    --ink-2: #9fb1c2;
+    --line: #2a3a4a;
+    --accent: #7fb6ea;
+    --accent-soft: #1b3148;
+    --c-auto: #4fb487;
+    --c-pub: #5aa3e6;
+    --c-forn: #e0a24a;
+    --c-int: #a594e0;
+    --c-inf: #7d8b99;
+    --warn-bg: #3a2e14;
+    --warn-ink: #f1cf8a;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #0e1822;
+  --paper: #15222f;
+  --ink: #e4ecf3;
+  --ink-2: #9fb1c2;
+  --line: #2a3a4a;
+  --accent: #7fb6ea;
+  --accent-soft: #1b3148;
+  --c-auto: #4fb487;
+  --c-pub: #5aa3e6;
+  --c-forn: #e0a24a;
+  --c-int: #a594e0;
+  --c-inf: #7d8b99;
+  --warn-bg: #3a2e14;
+  --warn-ink: #f1cf8a;
+}
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font: 16px/1.55 "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  padding-inline: 16px;
+  padding-block: 0 4rem;
+}
+.wrap { max-width: 1040px; margin: 0 auto; }
+h1, h2, h3 { font-family: Raleway, "Segoe UI", system-ui, sans-serif; text-wrap: balance; line-height: 1.2; }
+h1 { font-size: clamp(1.8rem, 1.4rem + 1.8vw, 2.6rem); font-weight: 800; margin: 0.4rem 0 0.8rem; }
+h2 { font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.55rem); font-weight: 700; margin: 0 0 0.75rem; }
+h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 0.35rem; }
+p { margin: 0 0 0.8rem; max-width: 68ch; }
+.eyebrow { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.lead { font-size: 1.12rem; color: var(--ink-2); }
+section { margin-top: 2.75rem; }
+.num { font-variant-numeric: tabular-nums; }
+
+header.topo { padding-block: 2.5rem 0.5rem; border-bottom: 1px solid var(--line); padding-bottom: 1.5rem; }
+.meta-doc { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; font-size: 0.9rem; color: var(--ink-2); margin-top: 0.6rem; }
+
+/* resumo */
+.resumo { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1.5rem; margin-top: 2rem; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem 2rem; margin-bottom: 1.4rem; }
+.kpi b { display: block; font-family: Raleway, system-ui, sans-serif; font-size: clamp(2rem, 1.6rem + 1.6vw, 2.8rem); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.kpi span { color: var(--ink-2); font-size: 0.95rem; }
+.kpi.destaque b { color: var(--accent); }
+.barra { display: flex; height: 38px; border-radius: 6px; overflow: hidden; gap: 2px; }
+.seg { display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.9rem; min-width: 24px; font-variant-numeric: tabular-nums; }
+.seg.auto, .sw.auto { background: var(--c-auto); }
+.seg.pub, .sw.pub { background: var(--c-pub); }
+.seg.forn, .sw.forn { background: var(--c-forn); }
+.seg.int, .sw.int { background: var(--c-int); }
+.seg.inf, .sw.inf { background: var(--c-inf); }
+.chave { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--ink-2); margin-top: 0.4rem; gap: 1rem; flex-wrap: wrap; }
+.legenda { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; font-size: 0.92rem; }
+.legenda li { display: flex; align-items: center; gap: 0.45rem; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* tabelas */
+.tabela-box { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+th, td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-2); font-weight: 700; background: var(--paper); }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.ok td.status { color: var(--c-auto); font-weight: 700; }
+tr.parcial td.status { color: var(--ink-2); }
+
+.filtros { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1rem; }
+.filtros button {
+  font: inherit; font-size: 0.88rem; padding: 0.35rem 0.85rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+}
+.filtros button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.filtros button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.filtros .rot { font-size: 0.85rem; color: var(--ink-2); align-self: center; margin-right: 0.25rem; }
+
+table.inds { min-width: 860px; }
+table.inds td.ind { width: 30%; }
+table.inds td.meta { width: 15%; }
+table.inds td.rota { width: 40%; color: var(--ink-2); font-size: 0.92rem; }
+.ind .id { display: block; font-size: 0.75rem; letter-spacing: 0.04em; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.ind strong { display: block; }
+.ind .obj { display: block; font-size: 0.85rem; color: var(--ink-2); margin-top: 0.2rem; }
+.rota .resp { display: block; margin-top: 0.35rem; font-size: 0.82rem; }
+.confirmar { margin: 0.4rem 0 0; font-size: 0.82rem; background: var(--warn-bg); color: var(--warn-ink); padding: 0.2rem 0.5rem; border-radius: 4px; display: inline-block; }
+tr.eixo-linha th { background: var(--accent-soft); color: var(--ink); font-family: Raleway, system-ui, sans-serif; font-size: 0.95rem; text-transform: none; letter-spacing: 0; }
+tr.eixo-linha th span { font-family: "Source Sans 3", system-ui, sans-serif; font-weight: 400; color: var(--ink-2); margin-left: 0.5rem; font-size: 0.88rem; }
+
+.chip { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: 999px; border: 1.5px solid currentColor; white-space: nowrap; }
+.chip.auto { color: var(--c-auto); }
+.chip.pub { color: var(--c-pub); }
+.chip.forn { color: var(--c-forn); }
+.chip.int { color: var(--c-int); }
+.chip.inf { color: var(--c-inf); }
+
+/* ampliacoes */
+.ampl { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 0.9rem; }
+.ampl li { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; }
+.ampl p { font-size: 0.9rem; color: var(--ink-2); margin: 0.45rem 0 0; }
+.a-topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.6rem; }
+
+/* pedidos e fases */
+.pedidos { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.9rem; }
+.pedido { border-top: 3px solid var(--line); padding-top: 0.75rem; }
+.pedido.pub { border-color: var(--c-pub); }
+.pedido.forn { border-color: var(--c-forn); }
+.pedido.int { border-color: var(--c-int); }
+.pedido.inf { border-color: var(--c-inf); }
+.pedido ul { margin: 0.3rem 0 0; padding-left: 1.1rem; font-size: 0.93rem; }
+.pedido li { margin-bottom: 0.3rem; }
+.quem { font-size: 0.8rem; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+
+ol.fases { list-style: none; counter-reset: f; padding: 0; margin: 0; display: grid; gap: 0.8rem; }
+ol.fases li { counter-increment: f; display: grid; grid-template-columns: 2.4rem 1fr; gap: 0.2rem 0.9rem; align-items: start; }
+ol.fases li::before { content: counter(f); font-family: Raleway, system-ui, sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--paper); background: var(--accent); width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; grid-row: span 2; }
+ol.fases h3 { margin: 0.35rem 0 0; }
+ol.fases p { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
+.feito { font-size: 0.78rem; font-weight: 700; color: var(--c-auto); margin-left: 0.4rem; }
+
+.notas { font-size: 0.93rem; color: var(--ink-2); padding-left: 1.1rem; }
+.notas li { margin-bottom: 0.45rem; max-width: 80ch; }
+footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: 0.85rem; color: var(--ink-2); }
+
+@media (max-width: 560px) {
+  .resumo { padding: 1.1rem; }
+  .seg { font-size: 0.78rem; }
+}
+</style>
+
+<div class="wrap">
+<header class="topo">
+  <div class="eyebrow">Proposta à Comissão Gestora do PLS</div>
+  <h1>Automação dos indicadores do PLS UFPB 2025–2029</h1>
+  <p class="lead">O Painel de Sustentabilidade pode acompanhar {{AUTOM_TOTAL}} dos {{N}} indicadores do plano sem planilha manual. Esta proposta mostra a fonte de cada indicador, o que já funciona e o que a Comissão precisa pedir a cada setor.</p>
+  <div class="meta-doc">
+    <span>Base: Plano Diretor de Logística Sustentável, versão de 09/05/2025</span>
+    <span>Situação em 23/09/2026</span>
+  </div>
+</header>
+
+<div class="resumo" aria-labelledby="t-resumo">
+  <h2 id="t-resumo" class="eyebrow" style="font-size:.8rem">Resumo</h2>
+  <div class="kpis">
+    <div class="kpi destaque"><b>{{PCT}}%</b><span>dos indicadores do plano podem ser automatizados ({{AUTOM_TOTAL}} de {{N}})</span></div>
+    <div class="kpi"><b>{{PUB}}</b><span>dependem só de dados públicos (PNCP, Portal, INPI)</span></div>
+    <div class="kpi"><b>{{INF}}</b><span>continuam informados pela Comissão, em formulário padronizado</span></div>
+    <div class="kpi"><b>{{N_AMPL}}</b><span>indicadores novos que o painel acrescenta ({{AMPL_AUTO}} já automáticos)</span></div>
+  </div>
+  <div class="barra" role="img" aria-label="Distribuição dos {{N}} indicadores por rota de automação">{{BARRA}}</div>
+  <div class="chave"><span>← automatizáveis: {{AUTOM_TOTAL}}</span><span>informados: {{INF}} →</span></div>
+  <ul class="legenda">{{LEGENDA}}</ul>
+</div>
+
+<section aria-labelledby="t-prova">
+  <h2 id="t-prova">Os dados públicos batem com o diagnóstico do PLS</h2>
+  <p>O painel usa a mesma métrica da PROPLAN: valor pago no ano, somado aos restos a pagar pagos. Comparado com o Tesouro Gerencial, o ano de 2023 do diagnóstico é reproduzido ao centavo.</p>
+  <div class="tabela-box">
+    <table>
+      <thead><tr><th>Despesa em 2023</th><th class="r">PLS (PROPLAN)</th><th class="r">Tesouro Gerencial</th><th>Situação</th></tr></thead>
+      <tbody>
+        <tr class="ok"><td>Energia elétrica (Tabela 12)</td><td class="r">R$ 11.119.143,58</td><td class="r">R$ 11.119.143,90</td><td class="status">Confere</td></tr>
+        <tr class="ok"><td>Água e esgoto (Tabela 10)</td><td class="r">R$ 4.123.970,61</td><td class="r">R$ 4.123.970,48</td><td class="status">Confere</td></tr>
+        <tr class="ok"><td>Combustíveis, outras finalidades (Tabela 13)</td><td class="r">R$ 1.332,00</td><td class="r">R$ 1.332,00</td><td class="status">Confere</td></tr>
+        <tr class="parcial"><td>Energia elétrica em 2024</td><td class="r">R$ 10.595.478,44</td><td class="r">R$ 10.773.752,22</td><td class="status">PLS usou dados de dez/2024, antes do fechamento</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:.8rem">As Tabelas 10, 12 e 13 passam a ser atualizadas todo mês, por unidade gestora e corrigidas pelo IPCA.</p>
+</section>
+
+<section aria-labelledby="t-fat">
+  <h2 id="t-fat">Consumo de energia, água, combustível e resíduos sem pedir nada a ninguém</h2>
+  <p>Cada pagamento de água e energia no Portal da Transparência traz o número do processo. O processo é público no SIPAC e contém a fatura em PDF, que o painel lê sozinho: kWh por unidade consumidora (Energisa) e m³ por ligação (CAGEPA), por campus e mês de referência. Nos processos da gerenciadora de frota, o relatório de abastecimentos dá litros por combustível, campus e veículo, sem dados do condutor. Nos pagamentos da coleta de resíduos de saúde, a medição mensal da GMA/SINFRA dá os kg por campus.</p>
+{{FATURAS}}
+</section>
+
+<section aria-labelledby="t-inds">
+  <h2 id="t-inds">Os {{N}} indicadores e a rota de cada um</h2>
+  <div class="filtros" role="group" aria-label="Filtrar por eixo">
+    <span class="rot">Eixo</span>
+    <button type="button" id="f-eixo-todos" data-eixo="" aria-pressed="true">Todos</button>
+    <button type="button" id="f-eixo-1" data-eixo="1" aria-pressed="false">1 · Consumo</button>
+    <button type="button" id="f-eixo-2" data-eixo="2" aria-pressed="false">2 · Espaços</button>
+    <button type="button" id="f-eixo-3" data-eixo="3" aria-pressed="false">3 · Menor impacto</button>
+    <button type="button" id="f-eixo-4" data-eixo="4" aria-pressed="false">4 · Inovação</button>
+    <button type="button" id="f-eixo-5" data-eixo="5" aria-pressed="false">5 · Negócios de impacto</button>
+    <button type="button" id="f-eixo-6" data-eixo="6" aria-pressed="false">6 · Capacitação</button>
+  </div>
+  <div class="filtros" role="group" aria-label="Filtrar por rota">
+    <span class="rot">Rota</span>
+    <button type="button" id="f-nivel-todos" data-nivel="" aria-pressed="true">Todas</button>
+    <button type="button" id="f-nivel-auto" data-nivel="auto" aria-pressed="false">Automático hoje</button>
+    <button type="button" id="f-nivel-pub" data-nivel="pub" aria-pressed="false">Dado público</button>
+    <button type="button" id="f-nivel-forn" data-nivel="forn" aria-pressed="false">Fornecedor</button>
+    <button type="button" id="f-nivel-int" data-nivel="int" aria-pressed="false">Sistema da UFPB</button>
+    <button type="button" id="f-nivel-inf" data-nivel="inf" aria-pressed="false">Informado</button>
+  </div>
+  <div class="tabela-box">
+    <table class="inds">
+      <thead><tr><th>Indicador</th><th>Meta</th><th>Rota</th><th>Como automatizar</th></tr></thead>
+      <tbody id="corpo">
+{{LINHAS}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="t-ampl">
+  <h2 id="t-ampl">O que o painel acrescenta ao plano</h2>
+  <p>Indicadores sem meta no PLS, mas que medem o resultado das ações previstas. A maior parte já sai automática dos dados públicos.</p>
+  <ul class="ampl">
+{{AMPLIACOES}}
+  </ul>
+</section>
+
+<section aria-labelledby="t-pedidos">
+  <h2 id="t-pedidos">O que a Comissão precisa pedir</h2>
+  <p>Cada pedido abaixo transforma indicadores lançados à mão em indicadores atualizados sozinhos.</p>
+  <div class="pedidos">
+    <div class="pedido forn">
+      <div class="quem">SINFRA</div>
+      <h3>Geração solar</h3>
+      <ul>
+        <li>Marca e acesso ao portal de monitoramento dos inversores fotovoltaicos (kWh gerado).</li>
+        <li>Consumo de energia, água e combustível <strong>não</strong> precisa mais ser pedido: já sai automático das faturas e relatórios públicos no SIPAC.</li>
+      </ul>
+    </div>
+    <div class="pedido int">
+      <div class="quem">STI · PROGEP · UASGs</div>
+      <h3>Extrações dos sistemas da UFPB</h3>
+      <ul>
+        <li>SIGRH: capacitações concluídas, com tema e lotação do servidor.</li>
+        <li>SIPAC: saídas do almoxarifado (copos, papel) e baixas e incorporações do patrimônio.</li>
+        <li>Uma extração agendada por mês resolve seis indicadores.</li>
+      </ul>
+    </div>
+    <div class="pedido pub">
+      <div class="quem">UASGs</div>
+      <h3>Confirmações rápidas</h3>
+      <ul>
+        <li>CNPJ do operador do Almoxarifado Virtual Nacional (a adesão aparece nos pagamentos).</li>
+        <li>Em que base pública o Contrata+Brasil registra as contratações da UFPB.</li>
+      </ul>
+    </div>
+    <div class="pedido inf">
+      <div class="quem">Comissão Gestora</div>
+      <h3>Lançamento anual</h3>
+      <ul>
+        <li>Um formulário único para os {{INF}} indicadores documentais, com fonte e responsável.</li>
+        <li>O painel mostra meta, valor e situação de cada um ao lado dos automáticos.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-fases">
+  <h2 id="t-fases">Ordem de implantação</h2>
+  <ol class="fases">
+    <li><h3>Base automática e catálogo de metas <span class="feito">pronto</span></h3>
+      <p>Despesas, viagens, IPCA e comunidade acadêmica (INEP) carregados; consumo de energia e água lido das faturas públicas no SIPAC. Os {{N}} indicadores catalogados, com página de metas por eixo e lançamento manual padronizado.</p></li>
+    <li><h3>Módulo de contratações públicas (PNCP)</h3>
+      <p>Editais e itens da UFPB no PNCP e leilões: cobre {{PUB}} indicadores dos Eixos 1, 2, 4 e 5 sem depender de nenhum setor. Busca de cláusulas no texto dos editais (BIM, cota para mulheres vítimas de violência, mão de obra local, desperdício de alimentos).</p></li>
+    <li><h3>Dados dos fornecedores</h3>
+      <p>Geração solar dos inversores: {{FORN}} indicador (kWh gerado). Parte dele já aparece como energia injetada nas notas fiscais da Energisa.</p></li>
+    <li><h3>Sistemas internos da UFPB</h3>
+      <p>SIGRH e SIPAC: {{INT}} indicadores de capacitação e patrimônio.</p></li>
+  </ol>
+</section>
+
+<section aria-labelledby="t-lim">
+  <h2 id="t-lim">Limites conhecidos</h2>
+  <ul class="notas">
+    <li>Copos descartáveis: o dado público mede a <strong>compra</strong>, não o consumo. O consumo real vem das saídas do almoxarifado (fase 4).</li>
+    <li>Energia: unidades consumidoras cobradas pelo mínimo ou pela média têm kWh faturado diferente do medido; o painel usa o medido, da nota fiscal de cada unidade.</li>
+    <li>Energia no Campus I: o valor bruto das faturas supera o pago no Portal em cerca de R$ 14,5 mil por mês. Falta identificar se alguma unidade é paga em outro processo.</li>
+    <li>Indicadores de editais dependem do texto publicado no PNCP. Editais só em imagem digitalizada não permitem busca.</li>
+    <li>Itens marcados "a confirmar" dependem de verificar se o campo ou a base existe antes de programar.</li>
+    <li>O ano corrente aparece como "em andamento" enquanto não fecha: um ano parcial nunca é marcado como meta não atingida.</li>
+  </ul>
+</section>
+
+<footer>
+  Painel de Sustentabilidade da UFPB · dados do Portal da Transparência (CGU), Tesouro Gerencial, INEP e Banco Central. Catálogo de indicadores: <code>ref/indicadores_pls.csv</code> do ETL do painel.
+</footer>
+</div>
+
+<script>
+(function () {
+  var estado = { eixo: "", nivel: "" };
+  var linhas = document.querySelectorAll("#corpo tr");
+  function aplicar() {
+    linhas.forEach(function (tr) {
+      var okEixo = !estado.eixo || tr.dataset.eixo === estado.eixo;
+      if (tr.classList.contains("eixo-linha")) {
+        var algum = false;
+        linhas.forEach(function (o) {
+          if (!o.classList.contains("eixo-linha") && o.dataset.eixo === tr.dataset.eixo && (!estado.nivel || o.dataset.nivel === estado.nivel)) algum = true;
+        });
+        tr.hidden = !(okEixo && algum);
+      } else {
+        tr.hidden = !(okEixo && (!estado.nivel || tr.dataset.nivel === estado.nivel));
+      }
+    });
+  }
+  document.querySelectorAll(".filtros").forEach(function (grupo) {
+    grupo.addEventListener("click", function (ev) {
+      var b = ev.target.closest("button");
+      if (!b) return;
+      var chave = "eixo" in b.dataset ? "eixo" : "nivel";
+      estado[chave] = b.dataset[chave];
+      grupo.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      aplicar();
+    });
+  });
+})();
+</script>

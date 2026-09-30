@@ -1,0 +1,3 @@
+indicador_id;ano;valor;fonte;informado_por;data_registro;observacao
+E1-AGUA-01;2024;18529;Faturas CAGEPA (m³ do ano, Campi I, II e IV);SINFRA;2026-09-23;Exemplo - substituir pelo valor oficial
+E1-RU-01;2025;0;Comissão PLS;Comissão Gestora;2026-09-23;Exemplo: 0 = não, 1 = sim

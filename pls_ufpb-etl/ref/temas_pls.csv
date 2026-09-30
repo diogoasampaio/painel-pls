@@ -1,0 +1,13 @@
+tema_codigo;tema;eixo_pls;ordem;descricao
+energia;Energia elétrica;1;1;Fatura de energia e material elétrico (lâmpadas LED, fotovoltaica) - PLS Tabela 17
+agua_esgoto;Água e esgoto;1;2;Fatura de água e esgoto (CAGEPA) - PLS Tabela 16
+material_consumo;Materiais de consumo;1;3;Papel, copos descartáveis, cartuchos/toner, expediente e limpeza - PLS Tabela 18
+residuos;Resíduos;1;4;Coleta, tratamento e destinação de resíduos (identificado por texto, sem subelemento próprio) - PLS Tabela 19
+deslocamento;Deslocamento e frota;1;5;Combustíveis e manutenção da frota (PLS Tabela 19, OB2), diárias, passagens e emissões de viagens aéreas
+manutencao_predial;Manutenção predial;2;6;Manutenção e conservação de imóveis - contexto do Eixo 2 (ocupação dos espaços físicos)
+compras_sustentaveis;Compras sustentáveis;3;7;Itens empenhados com atributo sustentável (reciclado, biodegradável, refil, FSC) - PLS Tabela 21
+contratacoes;Serviços continuados e mão de obra;5;8;Limpeza, vigilância, apoio administrativo, alimentação (RU) e telecomunicações - base dos editais do Eixo 5
+capacitacao;Capacitação;6;9;Serviços de seleção e treinamento - contexto do Eixo 6
+emissoes;Emissões de GEE;1;10;Inventário de emissões: frota (escopo 1), energia elétrica da rede (escopo 2) e viagens aéreas (escopo 3), fatores em ref/fatores_gee.csv
+fornecedores;Fornecedores locais e de pequeno porte;5;11;Pagamentos a pessoa jurídica em contratações por porte (ME/EPP) e sede (Paraíba), pelo cadastro aberto de CNPJ da Receita - negócios de impacto
+contratacoes_pncp;Editais e compras compartilhadas;4;12;Contratações da UFPB no PNCP: critérios de sustentabilidade no edital/TR, margem de preferência, cotas sociais, BIM e compras compartilhadas (registro de preços com outros órgãos)

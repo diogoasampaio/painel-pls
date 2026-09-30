@@ -1,0 +1,13 @@
+[Unit]
+Description=ETL PLS UFPB - carga mensal (Portal da Transparencia, IPCA, indicadores)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/pls-etl
+ExecStart=/opt/pls-etl/.venv/bin/python run.py mensal
+EnvironmentFile=/opt/pls-etl/.env
+User=pls-etl
+# a carga pode levar dezenas de minutos por causa do limite de requisicoes
+TimeoutStartSec=6h

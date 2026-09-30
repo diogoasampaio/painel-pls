@@ -1,0 +1,8 @@
+# fim de linha LF no repositorio (servidores Linux: systemd, shell, Python)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.docx binary
+*.xlsx binary
+*.pdf binary

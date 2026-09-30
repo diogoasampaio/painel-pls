@@ -1,0 +1,2 @@
+ano;periodo;tipo_periodo;data_inicio_periodo;data_fim_periodo;nivel;codigo_curso_sigaa;nome_curso;codigo_inep;codigo_capes;unidade_responsavel;campus;municipio_oferta;modalidade;turno;qt_matriculados;qt_ativos_sem_matricula;qt_trancados;qt_mobilidade_saida;qt_ingressantes;qt_concluintes;qt_desvinculados;qt_alunos_especiais;ch_matriculada;data_extracao
+2025;1;regular;2025-03-10;2025-07-19;graduacao;1626669;ADMINISTRAÇÃO;13395;25001019001P0;CCSA - CENTRO DE CIÊNCIAS SOCIAIS APLICADAS;I;João Pessoa;presencial;noturno;712;18;41;3;90;35;22;4;198400;2025-08-05

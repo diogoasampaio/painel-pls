@@ -1,0 +1,2 @@
+campo;padrao;observacao
+nome_curso;sustent|meio ambiente|ambienta(?:l|is)|clim[aá]t|mudan[cç]as? do clima|res[ií]duo|reciclag|\benergi|efici[eê]ncia energ|[aá]gua|h[ií]dric|saneamento|biodivers|conserva[cç][aã]o da natureza|carbono|emiss[oõ]es|\bODS\b|agenda 2030|economia circular|log[ií]stica sustent|contrata[cç][oõ]es sustent|compras sustent|licita[cç][oõ]es sustent|ecoefici|\bA3P\b|Agenda Ambiental;Nome do curso (sem diferenciar maiúsculas). Revisar a lista de cursos casados no relatório de construção

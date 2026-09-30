@@ -1,0 +1,40 @@
+nivel;codigo;nome
+categoria;3;Despesas Correntes
+categoria;4;Despesas de Capital
+grupo;1;Pessoal e Encargos Sociais
+grupo;2;Juros e Encargos da Dívida
+grupo;3;Outras Despesas Correntes
+grupo;4;Investimentos
+grupo;5;Inversões Financeiras
+grupo;6;Amortização da Dívida
+modalidade;90;Aplicações Diretas
+modalidade;91;Aplicação Direta Decorrente de Operação entre Órgãos, Fundos e Entidades Integrantes dos Orçamentos Fiscal e da Seguridade Social
+modalidade;50;Transferências a Instituições Privadas sem Fins Lucrativos
+modalidade;30;Transferências a Estados e ao Distrito Federal
+modalidade;40;Transferências a Municípios
+modalidade;80;Transferências ao Exterior
+elemento;04;Contratação por Tempo Determinado
+elemento;08;Outros Benefícios Assistenciais do Servidor e do Militar
+elemento;11;Vencimentos e Vantagens Fixas - Pessoal Civil
+elemento;14;Diárias - Civil
+elemento;14;Diárias - Pessoal Civil
+elemento;18;Auxílio Financeiro a Estudantes
+elemento;20;Auxílio Financeiro a Pesquisadores
+elemento;30;Material de Consumo
+elemento;31;Premiações Culturais, Artísticas, Científicas, Desportivas e Outras
+elemento;32;Material, Bem ou Serviço para Distribuição Gratuita
+elemento;33;Passagens e Despesas com Locomoção
+elemento;35;Serviços de Consultoria
+elemento;36;Outros Serviços de Terceiros - Pessoa Física
+elemento;37;Locação de Mão-de-Obra
+elemento;39;Outros Serviços de Terceiros - Pessoa Jurídica
+elemento;40;Serviços de Tecnologia da Informação e Comunicação - Pessoa Jurídica
+elemento;46;Auxílio-Alimentação
+elemento;47;Obrigações Tributárias e Contributivas
+elemento;48;Outros Auxílios Financeiros a Pessoas Físicas
+elemento;49;Auxílio-Transporte
+elemento;51;Obras e Instalações
+elemento;52;Equipamentos e Material Permanente
+elemento;91;Sentenças Judiciais
+elemento;92;Despesas de Exercícios Anteriores
+elemento;93;Indenizações e Restituições

@@ -1,0 +1,365 @@
+<meta charset="utf-8">
+<title>Núcleo do PLS UFPB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --ground: #f3f6f8; --paper: #ffffff; --ink: #10263d; --ink-2: #4a5d70; --line: #d5dee6;
+  --accent: #0b4f8a; --accent-soft: #e3eef8; --code-bg: #eef3f7;
+  --auto: #2e7d5b; --auto-soft: #e2f2ea; --calc: #a8680f; --calc-soft: #fbefdc;
+  --nova: #1f6fb8; --nova-soft: #e1edf9; --inf: #6f7e8c; --inf-soft: #eceff2;
+  --ruim: #b3261e; --ruim-soft: #fbe7e5;
+  --fx-atingida: #2e7d5b; --fx-proxima: #6a9a3a; --fx-progresso: #b7801a; --fx-distante: #b3261e;
+  --fx-nao_avaliavel: #6d8aa6; --fx-sem_dado: #8a97a3; --fx-sem_meta: #c3ccd4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #0e1822; --paper: #15222f; --ink: #e4ecf3; --ink-2: #9fb1c2; --line: #2a3a4a;
+    --accent: #7fb6ea; --accent-soft: #1b3148; --code-bg: #1b2a38;
+    --auto: #4fb487; --auto-soft: #16352a; --calc: #e0a24a; --calc-soft: #3a2c14;
+    --nova: #5aa3e6; --nova-soft: #16304a; --inf: #8d9baa; --inf-soft: #222f3c;
+    --ruim: #f08a80; --ruim-soft: #3d1f1d;
+    --fx-sem_meta: #3a4957;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #0e1822; --paper: #15222f; --ink: #e4ecf3; --ink-2: #9fb1c2; --line: #2a3a4a;
+  --accent: #7fb6ea; --accent-soft: #1b3148; --code-bg: #1b2a38;
+  --auto: #4fb487; --auto-soft: #16352a; --calc: #e0a24a; --calc-soft: #3a2c14;
+  --nova: #5aa3e6; --nova-soft: #16304a; --inf: #8d9baa; --inf-soft: #222f3c;
+  --ruim: #f08a80; --ruim-soft: #3d1f1d;
+  --fx-sem_meta: #3a4957;
+}
+body { background: var(--ground); color: var(--ink); font: 16px/1.55 "Source Sans 3", "Segoe UI", system-ui, sans-serif; padding-inline: 16px; padding-block: 0 4rem; }
+.wrap { max-width: 1120px; margin: 0 auto; }
+h1, h2, h3 { font-family: Raleway, "Segoe UI", system-ui, sans-serif; text-wrap: balance; line-height: 1.2; margin: 0; }
+p { margin: 0 0 0.7rem; max-width: 72ch; }
+code { font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; }
+.num { font-variant-numeric: tabular-nums; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+header.topo { padding-block: 2.2rem 1rem; }
+.eyebrow { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+h1 { font-size: clamp(1.8rem, 1.3rem + 2vw, 2.6rem); font-weight: 800; margin: 0.35rem 0 0.6rem; }
+.lead { font-size: 1.12rem; color: var(--ink-2); max-width: 64ch; }
+
+.abas { display: flex; gap: 0.5rem; border-bottom: 2px solid var(--line); margin-top: 0.8rem; flex-wrap: wrap; }
+.abas button { font: inherit; font-family: Raleway, system-ui, sans-serif; font-weight: 700; font-size: 1rem; background: none; border: 0; color: var(--ink-2); cursor: pointer; padding: 0.75rem 1rem; margin-bottom: -2px; border-bottom: 3px solid transparent; }
+.abas button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+
+/* apresentacao */
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem 1.5rem; margin: 1.8rem 0 1rem; }
+.kpi b { display: block; font-family: Raleway, system-ui, sans-serif; font-size: clamp(2rem, 1.5rem + 1.6vw, 2.7rem); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.kpi span { color: var(--ink-2); font-size: 0.95rem; }
+.kpi.destaque b { color: var(--auto); }
+.barra { display: flex; height: 34px; border-radius: 6px; overflow: hidden; gap: 2px; margin-top: 0.4rem; }
+.seg { display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.9rem; min-width: 28px; }
+.seg.auto, .sw.auto { background: var(--auto); } .seg.calc, .sw.calc { background: var(--calc); }
+.seg.nova, .sw.nova { background: var(--nova); } .seg.inf, .sw.inf { background: var(--inf); }
+.legenda { list-style: none; padding: 0; margin: 0.7rem 0 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; font-size: 0.93rem; }
+.legenda li { display: flex; align-items: center; gap: 0.45rem; }
+.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+section.bloco { margin-top: 2.6rem; }
+section.bloco > h2 { font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); margin-bottom: 0.8rem; }
+.lei { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1rem; }
+.lei article { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.2rem; }
+.lei h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+.lei p, .lei li { font-size: 0.95rem; }
+.lei ul { margin: 0; padding-left: 1.1rem; }
+.principios { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem 1.6rem; }
+.principios li { border-top: 3px solid var(--accent); padding-top: 0.6rem; }
+.principios b { display: block; font-family: Raleway, system-ui, sans-serif; margin-bottom: 0.2rem; }
+.principios span { color: var(--ink-2); font-size: 0.95rem; }
+
+.tipos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 1rem; margin-top: 1rem; }
+.tipos div { border-left: 4px solid var(--line); padding: 0.2rem 0 0.2rem 0.8rem; }
+.tipos div.auto { border-color: var(--auto); } .tipos div.calc { border-color: var(--calc); }
+.tipos div.nova { border-color: var(--nova); } .tipos div.inf { border-color: var(--inf); }
+.tipos b { display: block; }
+.tipos span { font-size: 0.92rem; color: var(--ink-2); }
+
+.cadeia { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 1rem 0 0; padding: 0; list-style: none; font-size: 0.92rem; }
+.cadeia li { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 0.8rem; }
+.cadeia li.seta { border: 0; background: none; padding: 0; color: var(--ink-2); }
+
+.tab { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; }
+.tab table { border-collapse: collapse; width: 100%; font-size: 0.93rem; }
+.tab th, .tab td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.tab tbody th { width: 16rem; font-weight: 600; }
+.tab tbody th span { display: block; color: var(--accent); font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+.tab td { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.fases { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 1rem; counter-reset: fase; }
+.fases li { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.1rem; }
+.fases b { display: block; font-family: Raleway, system-ui, sans-serif; }
+.fases small { display: block; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.2rem; }
+.fases span { font-size: 0.93rem; color: var(--ink-2); }
+
+.validar { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+.validar li { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 0.7rem 1rem; display: grid; grid-template-columns: 1.4rem 1fr; gap: 0.6rem; }
+.validar li::before { content: ""; width: 1rem; height: 1rem; border: 2px solid var(--ink-2); border-radius: 4px; margin-top: 0.2rem; }
+.validar b { display: block; }
+.validar span { font-size: 0.93rem; color: var(--ink-2); }
+
+/* painel */
+.eixo { margin-top: 2rem; }
+.eixo h2 { font-size: 1.15rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); }
+.eixo h2 span { color: var(--accent); }
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr)); gap: 1rem; margin-top: 1rem; }
+.ind { background: var(--paper); border: 1px solid var(--line); border-top: 4px solid var(--line); border-radius: 10px; padding: 1rem 1.2rem 1.1rem; display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; scroll-margin-top: 1rem; }
+.ind.auto { border-top-color: var(--auto); } .ind.calc { border-top-color: var(--calc); }
+.ind.nova { border-top-color: var(--nova); } .ind.inf { border-top-color: var(--inf); }
+.ind header { display: flex; flex-wrap: wrap; gap: 0.4rem 0.7rem; align-items: center; }
+.cod { font-weight: 700; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.fase { font-size: 0.8rem; color: var(--ink-2); margin-left: auto; }
+.chip { display: inline-block; font-size: 0.78rem; font-weight: 700; padding: 0.12rem 0.6rem; border-radius: 999px; text-decoration: none; }
+.chip.auto { background: var(--auto-soft); color: var(--auto); } .chip.calc { background: var(--calc-soft); color: var(--calc); }
+.chip.nova { background: var(--nova-soft); color: var(--nova); } .chip.inf { background: var(--inf-soft); color: var(--inf); }
+.ind h3 { font-size: 1.08rem; }
+.formula { background: var(--code-bg); border-radius: 6px; padding: 0.55rem 0.75rem; display: grid; gap: 0.15rem; }
+.formula code { font-size: 0.85rem; line-height: 1.5; overflow-wrap: anywhere; }
+.formula em { font-style: normal; font-size: 0.82rem; color: var(--ink-2); }
+.anos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+@media (max-width: 460px) { .anos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ano { display: grid; gap: 0.1rem; align-content: start; }
+.ano .a { font-size: 0.8rem; color: var(--ink-2); font-weight: 700; }
+.ano .a i { font-weight: 400; }
+.ano b { font-size: 1.05rem; overflow-wrap: anywhere; }
+.sit { justify-self: start; font-size: 0.72rem; font-weight: 700; padding: 0.05rem 0.4rem; border-radius: 4px; background: var(--accent-soft); color: var(--ink-2); }
+.sit.ok { background: var(--auto-soft); color: var(--auto); } .sit.ruim { background: var(--ruim-soft); color: var(--ruim); }
+.hoje { font-size: 0.88rem; background: var(--calc-soft); color: var(--ink); padding: 0.4rem 0.6rem; border-radius: 6px; margin: 0; }
+.vazio-ind { font-size: 0.92rem; color: var(--ink-2); border: 1px dashed var(--line); border-radius: 8px; padding: 0.7rem 0.8rem; }
+.vazio-ind b { color: var(--ink); }
+.obs, .fonte { font-size: 0.86rem; color: var(--ink-2); margin: 0; }
+.ficha { font-size: 0.88rem; font-weight: 600; margin-top: auto; }
+.resumo-acoes { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.2rem; }
+.resumo-acoes b { font-variant-numeric: tabular-nums; }
+.chip.ruim { background: var(--ruim-soft); color: var(--ruim); }
+.tab.acoes { margin-top: 0.8rem; }
+.tab.acoes table { min-width: 860px; }
+.tab.acoes td { display: table-cell; font-size: 0.9rem; }
+.tab.acoes thead th { font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); }
+.tab.acoes tbody th { width: auto; font-weight: 400; }
+.tab.acoes tbody th .cod { display: block; font-size: 0.78rem; font-weight: 700; color: var(--accent); }
+.tab.acoes small { display: block; font-size: 0.8rem; color: var(--ink-2); margin-top: 0.2rem; }
+/* execucao do plano */
+.exec { margin-top: 1.6rem; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem 1.3rem 1.3rem; }
+.exec > h2 { font-size: 1.2rem; }
+.exec .kpis { margin: 1rem 0 0.8rem; }
+.mini { font-size: 0.9rem; color: var(--ink-2); margin: 0.6rem 0 0; }
+.barra.fx .seg { min-width: 26px; }
+.fx-atingida { background: var(--fx-atingida); } .fx-proxima { background: var(--fx-proxima); }
+.fx-progresso { background: var(--fx-progresso); } .fx-distante { background: var(--fx-distante); }
+.fx-nao_avaliavel { background: var(--fx-nao_avaliavel); } .fx-sem_dado { background: var(--fx-sem_dado); }
+.fx-sem_meta { background: var(--fx-sem_meta); color: var(--ink) !important; }
+.exec-eixos { margin-top: 1rem; }
+.exec-eixos td { display: table-cell; vertical-align: middle; }
+.exec-eixos td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.exec-eixos td.fxcel { min-width: 180px; width: 40%; }
+.exec-eixos .barra { height: 24px; margin: 0; }
+.exec-eixos thead th { font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); }
+.formula-indice { background: var(--code-bg); border-radius: 8px; padding: 0.8rem 1rem; margin: 0.6rem 0 1rem; }
+.formula-indice code { font-size: 0.92rem; overflow-wrap: anywhere; }
+.faixas-def { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 0.5rem 1rem; font-size: 0.93rem; }
+.faixas-def li { display: flex; gap: 0.5rem; align-items: baseline; }
+.faixas-def .sw { flex: none; transform: translateY(1px); }
+.tab.metas td { display: table-cell; font-size: 0.92rem; }
+.tab.metas td.ok { color: var(--auto); font-weight: 600; }
+.tab.metas td.falta { color: var(--ink-2); }
+.tab.metas thead th { font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); }
+footer.rodape { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.88rem; }
+</style>
+
+<div class="wrap">
+  <header class="topo">
+    <div class="eyebrow">Plano Diretor de Logística Sustentável · UFPB · proposta para a Comissão</div>
+    <h1>Núcleo do PLS UFPB</h1>
+    <p class="lead">{{N}} indicadores cobrem os seis temas obrigatórios do PLS. {{AUTOMATIZAVEIS}} deles podem ser calculados só com dados públicos, sem ninguém precisar preencher planilha.</p>
+  </header>
+
+  <div class="abas" role="tablist" aria-label="Seções">
+    <button type="button" role="tab" id="tab-apres" aria-controls="painel-apres" aria-selected="true">Apresentação</button>
+    <button type="button" role="tab" id="tab-painel" aria-controls="painel-painel" aria-selected="false" tabindex="-1">Painel do núcleo</button>
+    <button type="button" role="tab" id="tab-acoes" aria-controls="painel-acoes" aria-selected="false" tabindex="-1">Plano de ações ({{N_ACOES}})</button>
+  </div>
+
+  <div role="tabpanel" id="painel-apres" aria-labelledby="tab-apres">
+    <div class="kpis">
+      <div class="kpi"><b>{{N}}</b><span>indicadores no núcleo</span></div>
+      <div class="kpi"><b>6 de 6</b><span>temas obrigatórios cobertos (Portaria 8.678, art. 8, III)</span></div>
+      <div class="kpi destaque"><b>{{AUTO}}</b><span>já automatizados no painel</span></div>
+      <div class="kpi"><b>{{PCT}}%</b><span>automatizáveis ao fim do roteiro</span></div>
+    </div>
+    <div class="barra" role="img" aria-label="Distribuição dos indicadores por situação">{{BARRA}}</div>
+    <ul class="legenda">{{LEGENDA}}</ul>
+
+    <section class="bloco">
+      <h2>O que a legislação pede</h2>
+      <div class="lei">
+        <article>
+          <h3>Portaria SEGES/ME nº 8.678/2021</h3>
+          <ul>
+            <li>Art. 8, III: ações nos seis temas: consumo consciente, ocupação dos espaços, objetos de menor impacto, inovação no mercado, negócios de impacto e capacitação.</li>
+            <li>Art. 8, § 2º: objetivos desdobrados em indicadores e metas <b>sempre que possível</b>. Não há lista obrigatória de indicadores.</li>
+            <li>Art. 8, V: metodologia de monitoramento e avaliação.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Portaria SEGES/MGI nº 5.376/2023</h3>
+          <ul>
+            <li>Adota o Caderno de Logística do PLS como modelo de referência.</li>
+            <li>Art. 4º: monitoramento anual com <b>Relatório de Avaliação de Desempenho</b>.</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Matriz orientativa da SEGES</h3>
+          <p>Sugere 94 indicadores nos seis eixos. Um terço é documental (“plano publicado”, “ação realizada”). O núcleo usa a matriz como cardápio e escolhe um conjunto enxuto que cubra todos os temas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="bloco">
+      <h2>Critérios de seleção dos indicadores</h2>
+      <ul class="principios">
+        <li><b>Cobrir cada tema obrigatório</b><span>Pelo menos um indicador bom por eixo da Portaria 8.678, em vez de muitos indicadores num só eixo.</span></li>
+        <li><b>Medir resultado</b><span>kWh, m³, toneladas de CO₂e e % de compras sustentáveis dizem mais que “plano elaborado”.</span></li>
+        <li><b>Usar dado que já nasce de um processo obrigatório</b><span>Pagamento no Portal da Transparência, fatura no SIPAC, edital no PNCP, censo do INEP. A automação sai como subproduto.</span></li>
+        <li><b>Normalizar</b><span>Por pessoa, por m², em % ou em R$ corrigido pelo IPCA, para comparar anos, campi e outras universidades.</span></li>
+        <li><b>Acompanhar o plano de ações do próprio PLS</b><span>As ações das Tabelas 16 a 24, com responsável e prazo, viram um único índice de cumprimento, atualizado a cada semestre com evidência.</span></li>
+      </ul>
+    </section>
+
+    <section class="bloco">
+      <h2>Como cada indicador é automatizado</h2>
+      <p>Todos os indicadores automáticos seguem a mesma cadeia, que roda todo mês sem intervenção:</p>
+      <ol class="cadeia">
+        <li>Coleta de dados públicos</li><li class="seta" aria-hidden="true">→</li>
+        <li>Leitura de faturas e relatórios no SIPAC</li><li class="seta" aria-hidden="true">→</li>
+        <li>Classificação por natureza, ação ou texto</li><li class="seta" aria-hidden="true">→</li>
+        <li>Correção pelo IPCA e divisão por pessoa ou m²</li><li class="seta" aria-hidden="true">→</li>
+        <li>Situação da meta</li>
+      </ol>
+      <div class="tipos">
+        <div class="auto"><b>Automatizado</b><span>Calculado hoje pelo painel. Cada um tem ficha de construção com fontes, passos e conferências.</span></div>
+        <div class="calc"><b>Dado já coletado, falta calcular</b><span>A informação já está no painel (litros, kWh, CNPJ dos favorecidos). Falta a regra de cálculo.</span></div>
+        <div class="nova"><b>Fonte pública nova</b><span>Depende de integrar o Compras.gov.br e o PNCP (editais e termos de referência).</span></div>
+        <div class="inf"><b>Informado pela Comissão</b><span>Só existe em documento. Preenchido uma vez por ano, com link da evidência.</span></div>
+      </div>
+      <p style="margin-top:1rem">A forma de cálculo de cada indicador está nas <a href="{{FICHAS}}" target="_blank" rel="noopener">fichas de construção</a>.</p>
+    </section>
+
+    <section class="bloco">
+      <h2>Cobertura dos temas obrigatórios</h2>
+      <div class="tab"><table><tbody>{{COBERTURA}}</tbody></table></div>
+      <p style="margin-top:0.8rem">O N15 (cumprimento do plano de ações) é transversal: acompanha as ações de todos os eixos do PLS.</p>
+    </section>
+
+    <section class="bloco">
+      <h2>Como a execução do plano é medida</h2>
+      <p>Uma medida única, o <b>índice sintético de execução</b>, resume os 15 indicadores do núcleo em dois componentes:</p>
+      <div class="formula-indice"><code>Índice = {{PESO_METAS}}% × alcance das metas + {{PESO_ACOES}}% × cumprimento do plano de ações (N15)</code></div>
+      <ul class="principios">
+        <li><b>Alcance de cada meta, de 0 a 100%</b><span>Quanto da meta foi cumprido no ano: redução ou aumento obtido sobre o previsto, ou valor sobre o mínimo. Piora conta 0%, e meta superada conta 100%, para um indicador não compensar outro.</span></li>
+        <li><b>Média por eixo</b><span>Primeiro a média dos indicadores de cada eixo, depois a média dos eixos. Um eixo com mais indicadores não pesa mais que os outros.</span></li>
+        <li><b>Só o que é comparável</b><span>O ano parcial, a linha de base e os anos antes do plano não entram. No ano em curso vale o alcance do último ano fechado, junto das ações do semestre.</span></li>
+        <li><b>Cobertura ao lado do índice</b><span>O painel mostra quantos indicadores com meta foram avaliados. Um índice alto com cobertura baixa diz pouco sobre o plano.</span></li>
+      </ul>
+      <p style="margin-top:1rem">Cada indicador cai numa <b>faixa de execução</b>, e o painel conta quantos há em cada faixa, no geral e por eixo:</p>
+      <ul class="faixas-def">
+        <li><span class="sw fx-atingida"></span><span><b>Meta atingida</b>: 100%</span></li>
+        <li><span class="sw fx-proxima"></span><span><b>Próxima da meta</b>: 75% a 99%</span></li>
+        <li><span class="sw fx-progresso"></span><span><b>Em progresso</b>: 50% a 74%</span></li>
+        <li><span class="sw fx-distante"></span><span><b>Distante da meta</b>: menos de 50%</span></li>
+        <li><span class="sw fx-nao_avaliavel"></span><span><b>Não avaliável no ano</b>: linha de base ou ano parcial</span></li>
+        <li><span class="sw fx-sem_dado"></span><span><b>Sem dado</b>: tem meta e ainda não tem valor</span></li>
+        <li><span class="sw fx-sem_meta"></span><span><b>Sem meta definida</b></span></li>
+      </ul>
+      <h3 style="margin:1.6rem 0 0.6rem">Metas do núcleo</h3>
+      <p>Hoje só {{N_COM_META}} dos 14 indicadores com meta possível têm meta, herdada do PLS atual. O índice passa a representar o plano quando a Comissão fixar as demais. A sugestão abaixo é do <b>tipo</b> de meta; o valor fica com a Comissão.</p>
+      <div class="tab metas"><table>
+        <thead><tr><th>Indicador</th><th>Meta hoje</th><th>Sugestão</th></tr></thead>
+        <tbody>{{METAS}}</tbody></table></div>
+    </section>
+
+    <section class="bloco">
+      <h2>Roteiro</h2>
+      <ol class="fases">
+        <li><small>Fase 1</small><b>Calcular com dados já coletados</b><span>Feito: emissões de GEE, combustível menos poluente, % de material sustentável e negócios de impacto (porte e UF dos fornecedores pelo cadastro aberto de CNPJ da Receita).</span></li>
+        <li><small>Fase 2</small><b>Integrar Compras.gov.br e PNCP</b><span>Feito: critérios de sustentabilidade lidos no texto dos editais e TRs (N10), compras compartilhadas pelas atas e contratos (N11), e mais cinco indicadores do PLS (margem de preferência, cota para mulheres, mão de obra local, agricultura familiar nos alimentos e BIM).</span></li>
+        <li><small>Fase 3</small><b>Acompanhamento das ações e relatório anual</b><span>Feito: formulário no painel para os setores (acompanhamento das ações e valores informados), índice sintético de execução e alerta da saúde da carga. Falta o Relatório de Avaliação de Desempenho gerado pelo painel.</span></li>
+        <li><small>Fase 4</small><b>Trocar aproximações por dado exato</b><span>SIGRH (capacitação) e almoxarifado e patrimônio do SIPAC, com a STI.</span></li>
+      </ol>
+    </section>
+
+    <section class="bloco">
+      <h2>Para a Comissão validar</h2>
+      <ul class="validar">
+        <li><div><b>Adotar os {{N}} indicadores como núcleo do PLS</b><span>Os demais indicadores do PLS atual e da matriz SEGES seguem como acompanhamento, sem meta.</span></div></li>
+        <li><div><b>Combustível menos poluente = etanol + diesel S10</b><span>Definição da matriz SEGES. Hoje o PLS conta só o etanol, o que dá 0%.</span></div></li>
+        <li><div><b>Critérios de sustentabilidade nos editais</b><span>Lista de termos (logística reversa, Selo Procel, madeira certificada, reserva de vagas…) a validar por amostra de termos de referência.</span></div></li>
+        <li><div><b>Universo das contratações</b><span>Todas ou excluindo dispensas de pequeno valor (art. 75, II da Lei 14.133).</span></div></li>
+        <li><div><b>Plano de ações como base do N15</b><span>{{N_ACOES}} ações (Tabelas 16 a 24 e governança da seção 7), acompanhadas por semestre. Itens da matriz SEGES que faltam no PLS (plano de redução de GEE, SIADS, áreas verdes, ciclomobilidade) ficam como sugestão para a revisão.</span></div></li>
+        <li><div><b>Metas de cada indicador</b><span>Tipo e valor para os indicadores sem meta (quadro acima). Ano-base 2024, primeiro ano com todos os dados completos.</span></div></li>
+        <li><div><b>Pesos do índice sintético</b><span>Proposta: {{PESO_METAS}}% alcance das metas e {{PESO_ACOES}}% cumprimento das ações, com média por eixo.</span></div></li>
+        <li><div><b>Faixas de execução</b><span>Proposta: atingida (100%), próxima (75% ou mais), em progresso (50% ou mais) e distante (menos de 50%).</span></div></li>
+      </ul>
+    </section>
+  </div>
+
+  <div role="tabpanel" id="painel-painel" aria-labelledby="tab-painel" hidden>
+    {{EXECUCAO}}
+    <ul class="legenda" style="margin-top:1.4rem">{{LEGENDA}}</ul>
+    {{PAINEL}}
+  </div>
+
+  <div role="tabpanel" id="painel-acoes" aria-labelledby="tab-acoes" hidden>
+    <p style="margin-top:1.4rem">As ações do plano de ações do PLS UFPB (Tabelas 16 a 24) e as rotinas de governança da seção 7, com responsável e prazo do próprio PLS. A situação é calculada contra o prazo a partir do acompanhamento semestral dos responsáveis. Ações contínuas que o painel já comprova (monitorar água, energia, combustível e resíduos) aparecem em dia sem ninguém precisar informar.</p>
+    {{ACOES}}
+  </div>
+
+  <footer class="rodape">Fontes: Portal da Transparência, SIPAC/UFPB (consulta pública), Escola Virtual de Governo (ENAP), INEP e IBGE/BCB. Definição do núcleo em <code>ref/nucleo_pls.csv</code> do ETL do painel. Gerado em {{DATA}}.</footer>
+</div>
+
+<script>
+(function () {
+  var tabs = [document.getElementById("tab-apres"), document.getElementById("tab-painel"), document.getElementById("tab-acoes")];
+  var alvo = { "tab-apres": "painel-apres", "tab-painel": "painel-painel", "tab-acoes": "painel-acoes" };
+  function abrir(tab, foco) {
+    tabs.forEach(function (t) {
+      var sel = t === tab;
+      t.setAttribute("aria-selected", sel ? "true" : "false");
+      t.tabIndex = sel ? 0 : -1;
+      document.getElementById(alvo[t.id]).hidden = !sel;
+    });
+    if (foco) tab.focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { abrir(t, false); });
+    t.addEventListener("keydown", function (ev) {
+      if (ev.key === "ArrowRight" || ev.key === "ArrowLeft") {
+        ev.preventDefault();
+        abrir(tabs[(i + (ev.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length], true);
+      }
+    });
+  });
+  // chips da tabela de cobertura levam ao cartao no painel
+  document.querySelectorAll('[data-ir="painel"]').forEach(function (a) {
+    a.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      abrir(tabs[1], false);
+      var el = document.querySelector(a.getAttribute("href"));
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+  document.querySelectorAll("[data-aba]").forEach(function (a) {
+    a.addEventListener("click", function (ev) { ev.preventDefault(); abrir(document.getElementById(a.dataset.aba), false); window.scrollTo(0, 0); });
+  });
+  if (location.hash === "#painel") abrir(tabs[1], false);
+  if (location.hash === "#acoes") abrir(tabs[2], false);
+})();
+</script>

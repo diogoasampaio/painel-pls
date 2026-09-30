@@ -1,0 +1,9 @@
+[Unit]
+Description=Agenda ETL PLS UFPB diario (leva ao painel o que os setores preencheram nos formularios)
+
+[Timer]
+OnCalendar=*-*-* 06:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

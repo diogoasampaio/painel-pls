@@ -1,0 +1,128 @@
+<title>Construção dos indicadores PLS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --ground: #f3f6f8; --paper: #ffffff; --ink: #10263d; --ink-2: #4a5d70; --line: #d5dee6;
+  --accent: #0b4f8a; --accent-soft: #e3eef8; --code-bg: #eef3f7;
+  --c-auto: #2e7d5b; --c-auto-soft: #e2f2ea; --c-pend: #6f7e8c;
+  --warn-bg: #fff5e0; --warn-ink: #7a4d00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #0e1822; --paper: #15222f; --ink: #e4ecf3; --ink-2: #9fb1c2; --line: #2a3a4a;
+    --accent: #7fb6ea; --accent-soft: #1b3148; --code-bg: #1b2a38;
+    --c-auto: #4fb487; --c-auto-soft: #16352a; --c-pend: #8d9baa; --warn-bg: #3a2e14; --warn-ink: #f1cf8a;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #0e1822; --paper: #15222f; --ink: #e4ecf3; --ink-2: #9fb1c2; --line: #2a3a4a;
+  --accent: #7fb6ea; --accent-soft: #1b3148; --code-bg: #1b2a38;
+  --c-auto: #4fb487; --c-auto-soft: #16352a; --c-pend: #8d9baa; --warn-bg: #3a2e14; --warn-ink: #f1cf8a;
+}
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--ground); color: var(--ink); font: 16px/1.6 "Source Sans 3", "Segoe UI", system-ui, sans-serif; padding-inline: 16px; padding-block: 0 4rem; }
+h1, h2, h3, h4 { font-family: Raleway, "Segoe UI", system-ui, sans-serif; text-wrap: balance; line-height: 1.25; margin: 0; }
+code { font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; font-size: 0.86em; background: var(--code-bg); padding: 0.05em 0.35em; border-radius: 4px; overflow-wrap: anywhere; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.layout { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 2.5rem; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; gap: 0; } nav.sum { position: static !important; max-height: none !important; } }
+
+header.topo { max-width: 1240px; margin: 0 auto; padding-block: 2.2rem 1.6rem; }
+.eyebrow { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+h1 { font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.4rem); font-weight: 800; margin: 0.35rem 0 0.6rem; }
+.lead { color: var(--ink-2); font-size: 1.06rem; max-width: 76ch; margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 0.3rem 1.4rem; color: var(--ink-2); font-size: 0.92rem; margin-top: 0.8rem; }
+.meta b { color: var(--ink); font-variant-numeric: tabular-nums; }
+
+nav.sum { position: sticky; top: env(safe-area-inset-top, 0px); max-height: 100vh; overflow-y: auto; padding-block: 1rem 2rem; font-size: 0.9rem; }
+nav.sum > p { font-weight: 700; font-family: Raleway, system-ui, sans-serif; margin: 0 0 0.6rem; }
+nav.sum ul { list-style: none; margin: 0; padding: 0; }
+nav.sum .ex { display: block; font-weight: 700; color: var(--ink); text-decoration: none; margin: 0.9rem 0 0.3rem; }
+nav.sum li li a { display: flex; gap: 0.5rem; text-decoration: none; color: var(--ink-2); padding: 0.15rem 0 0.15rem 0.6rem; border-left: 3px solid var(--line); }
+nav.sum li li.a a { border-left-color: var(--c-auto); color: var(--ink); }
+nav.sum li li a span { font-variant-numeric: tabular-nums; font-size: 0.78rem; font-weight: 700; flex: none; width: 7.8rem; }
+nav.sum li li a:hover { color: var(--accent); }
+
+main { min-width: 0; }
+.bloco { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1.2rem 1.4rem; margin-bottom: 1.2rem; }
+.bloco h2 { font-size: 1.15rem; margin-bottom: 0.6rem; }
+.bloco p, .bloco li { max-width: 80ch; }
+.cadeia { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0.8rem; margin: 0.8rem 0 0; padding: 0; list-style: none; counter-reset: passo; }
+.cadeia li { border-top: 3px solid var(--accent); padding-top: 0.5rem; font-size: 0.92rem; counter-increment: passo; }
+.cadeia li::before { content: counter(passo) ". "; font-weight: 700; color: var(--accent); }
+.cadeia b { display: inline; }
+
+main > h2 { font-size: 1.3rem; margin: 2.4rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--line); scroll-margin-top: 1rem; }
+main > h2 span { color: var(--accent); }
+
+section.ind { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1.3rem 1.4rem 1.4rem; margin-bottom: 1.2rem; scroll-margin-top: 1rem; }
+section.ind header { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.8rem; }
+section.ind .id { font-weight: 700; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+section.ind .orig { font-size: 0.85rem; color: var(--ink-2); }
+.tag { font-size: 0.76rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 999px; border: 1.5px solid currentColor; }
+.tag.auto { color: var(--c-auto); }
+.tag.pend { color: var(--c-pend); }
+section.ind h3 { font-size: 1.2rem; margin: 0.5rem 0 0.2rem; }
+section.ind .obj { color: var(--ink-2); margin: 0 0 0.8rem; }
+section.ind h4 { font-size: 0.95rem; margin: 1.2rem 0 0.4rem; color: var(--accent); }
+section.ind ul, section.ind ol { margin: 0; padding-left: 1.3rem; }
+section.ind li { margin-bottom: 0.3rem; font-size: 0.95rem; }
+section.ind.pend { border-style: dashed; }
+
+dl.ficha { display: grid; gap: 0.35rem; margin: 0; background: var(--code-bg); border-radius: 8px; padding: 0.8rem 1rem; }
+dl.ficha div { display: grid; grid-template-columns: 11rem 1fr; gap: 0.8rem; font-size: 0.93rem; }
+dl.ficha dt { color: var(--ink-2); font-weight: 600; }
+dl.ficha dd { margin: 0; overflow-wrap: anywhere; }
+dl.ficha code { background: transparent; padding: 0; }
+@media (max-width: 520px) { dl.ficha div { grid-template-columns: 1fr; gap: 0; } }
+
+.tab { overflow-x: auto; }
+.tab table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+.tab th, .tab td { padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.tab thead th { font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); }
+.tab .r { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tab small { display: block; font-size: 0.76rem; color: var(--ink-2); font-weight: 400; }
+.nota { font-size: 0.86rem; color: var(--ink-2); margin: 0.4rem 0 0; }
+footer.rodape { max-width: 1240px; margin: 3rem auto 0; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.88rem; }
+</style>
+
+<header class="topo">
+  <div class="eyebrow">Plano Diretor de Logística Sustentável · UFPB 2025–2029</div>
+  <h1>Como cada indicador é construído</h1>
+  <p class="lead">Ficha técnica de cada indicador do painel: de onde vem o dado, cada passo da coleta e do tratamento, as regras de classificação, o cálculo ano a ano com numerador e denominador, as conferências feitas contra outras fontes e as limitações conhecidas.</p>
+  <div class="meta"><span><b>{{N}}</b> indicadores</span><span><b>{{N_AUTO}}</b> com construção automática</span><span><b>{{N_PEND}}</b> com construção proposta</span><span>R$ corrigidos para {{REF_IPCA}}</span><span>Gerado em {{DATA}}</span></div>
+</header>
+
+<div class="layout">
+  <nav class="sum" aria-label="Sumário">
+    <p>Sumário</p>
+    <ul><li><a href="#comum" class="ex">Cadeia comum e correções</a></li>{{SUMARIO}}</ul>
+  </nav>
+  <main>
+    <div class="bloco" id="comum">
+      <h2>A cadeia comum</h2>
+      <p>Todos os indicadores automáticos usam só dados públicos e seguem a mesma cadeia. O código fica no ETL do painel (<code>pls_ufpb-etl</code>) e roda todo mês com <code>python run.py mensal</code>.</p>
+      <ol class="cadeia">
+        <li><b>Coletar</b>: arquivos diários de despesas e anuais de viagens do Portal da Transparência, consulta pública do SIPAC, IPCA do Banco Central e microdados do INEP, guardados em <code>data/raw/</code>.</li>
+        <li><b>Classificar</b>: natureza de despesa, ação orçamentária ou regra de texto → tema e subtema do PLS, pelas tabelas de <code>ref/</code>.</li>
+        <li><b>Ler documentos</b>: faturas, relatórios de abastecimento e medições anexados aos processos de pagamento no SIPAC ({{PROC_OK}} de {{PROC_N}} processos lidos).</li>
+        <li><b>Agregar</b>: soma mensal por tema e subtema, correção pelo IPCA e divisões por pessoa e por m² (<code>pls_indicadores</code>).</li>
+        <li><b>Calcular a meta</b>: soma do ano, comparação com o ano-base ou o anterior e situação da meta (<code>pls_metas</code>).</li>
+      </ol>
+    </div>
+    <div class="bloco">
+      <h2>Números de processo corrigidos</h2>
+      <p>O Portal às vezes grava o número do processo de pagamento com erro. Os casos conferidos no SIPAC ficam em <code>ref/processos_corrigidos.csv</code>, e o consumo continua ligado ao processo certo.</p>
+      <div class="tab"><table><thead><tr><th>No Portal</th><th>No SIPAC</th><th>Evidência</th></tr></thead><tbody>{{CORRECOES}}</tbody></table></div>
+    </div>
+    {{CORPO}}
+  </main>
+</div>
+<footer class="rodape">Fonte: ETL do painel PLS UFPB (<code>ref/indicadores_pls.csv</code>, <code>pls_indicadores</code>, <code>pls_metas</code>). Os valores são os mesmos exibidos no painel e na página de indicadores.</footer>

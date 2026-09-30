@@ -1,0 +1,277 @@
+<title>Indicadores do PLS UFPB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --ground: #f3f6f8;
+  --paper: #ffffff;
+  --ink: #10263d;
+  --ink-2: #4a5d70;
+  --line: #d5dee6;
+  --accent: #0b4f8a;
+  --accent-soft: #e3eef8;
+  --formula-bg: #eef3f7;
+  --c-auto: #2e7d5b;
+  --c-auto-soft: #e2f2ea;
+  --c-pub: #1f6fb8;
+  --c-forn: #b0741a;
+  --c-int: #6d5aa8;
+  --c-inf: #6f7e8c;
+  --c-ruim: #b3261e;
+  --c-ruim-soft: #fbe7e5;
+  --warn-bg: #fff5e0;
+  --warn-ink: #7a4d00;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground: #0e1822; --paper: #15222f; --ink: #e4ecf3; --ink-2: #9fb1c2; --line: #2a3a4a;
+    --accent: #7fb6ea; --accent-soft: #1b3148; --formula-bg: #1b2a38;
+    --c-auto: #4fb487; --c-auto-soft: #16352a; --c-pub: #5aa3e6; --c-forn: #e0a24a; --c-int: #a594e0; --c-inf: #8d9baa;
+    --c-ruim: #f08a80; --c-ruim-soft: #3d1f1d; --warn-bg: #3a2e14; --warn-ink: #f1cf8a;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ground: #0e1822; --paper: #15222f; --ink: #e4ecf3; --ink-2: #9fb1c2; --line: #2a3a4a;
+  --accent: #7fb6ea; --accent-soft: #1b3148; --formula-bg: #1b2a38;
+  --c-auto: #4fb487; --c-auto-soft: #16352a; --c-pub: #5aa3e6; --c-forn: #e0a24a; --c-int: #a594e0; --c-inf: #8d9baa;
+  --c-ruim: #f08a80; --c-ruim-soft: #3d1f1d; --warn-bg: #3a2e14; --warn-ink: #f1cf8a;
+}
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font: 16px/1.55 "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  padding-inline: 16px;
+  padding-block: 0 4rem;
+}
+.wrap { max-width: 1120px; margin: 0 auto; }
+h1, h2, h3 { font-family: Raleway, "Segoe UI", system-ui, sans-serif; text-wrap: balance; line-height: 1.2; margin: 0; }
+.num { font-variant-numeric: tabular-nums; }
+
+header.topo { padding-block: 2.2rem 1.4rem; }
+.eyebrow { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+h1 { font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.4rem); font-weight: 800; margin: 0.35rem 0 0.6rem; }
+.lead { color: var(--ink-2); font-size: 1.08rem; max-width: 70ch; margin: 0; }
+
+/* abas */
+.abas { display: flex; gap: 0.5rem; border-bottom: 2px solid var(--line); margin-top: 1.2rem; flex-wrap: wrap; }
+.abas button {
+  font: inherit; font-family: Raleway, system-ui, sans-serif; font-weight: 700; font-size: 1rem;
+  background: none; border: 0; color: var(--ink-2); cursor: pointer;
+  padding: 0.75rem 1rem; margin-bottom: -2px; border-bottom: 3px solid transparent;
+  display: flex; align-items: center; gap: 0.55rem;
+}
+.abas button .qt { font-family: "Source Sans 3", system-ui, sans-serif; font-size: 0.85rem; font-weight: 700; padding: 0.05rem 0.55rem; border-radius: 999px; background: var(--line); color: var(--ink); font-variant-numeric: tabular-nums; }
+.abas button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.abas button#tab-auto[aria-selected="true"] .qt { background: var(--c-auto); color: var(--paper); }
+.abas button#tab-pend[aria-selected="true"] .qt,
+.abas button#tab-vars[aria-selected="true"] .qt { background: var(--accent); color: var(--paper); }
+
+/* variaveis */
+.grade.larga { grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); }
+.tabela-var { overflow-x: auto; margin-top: 0.2rem; }
+.tabela-var table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+.tabela-var th, .tabela-var td { padding: 0.45rem 0.55rem; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+.tabela-var thead th { font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); font-weight: 700; }
+.tabela-var th small, .tabela-var td small { display: block; font-size: 0.74rem; font-weight: 400; color: var(--ink-2); text-transform: none; letter-spacing: 0; }
+.tabela-var tbody th { font-weight: 600; }
+.tabela-var .r { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tabela-var tr.total th, .tabela-var tr.total td { font-weight: 700; border-top: 2px solid var(--line); }
+.tabela-var tr.sub th, .tabela-var tr.sub td { color: var(--ink-2); }
+.corr { color: var(--ink-2); }
+.abas button:focus-visible, .ferr button:focus-visible, .ferr input:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.resumo-aba { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; color: var(--ink-2); font-size: 0.95rem; margin: 1rem 0 0; }
+.resumo-aba b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.resumo-aba .sw { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 0.35rem; vertical-align: 0; }
+
+/* ferramentas */
+.ferr { display: flex; flex-wrap: wrap; gap: 0.6rem 1rem; align-items: center; margin: 1.2rem 0 0.4rem; }
+.ferr input {
+  font: inherit; flex: 1 1 240px; max-width: 360px; padding: 0.5rem 0.8rem; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+}
+.filtro-eixo { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.filtro-eixo button {
+  font: inherit; font-size: 0.86rem; padding: 0.3rem 0.8rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+}
+.filtro-eixo button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.vazio { color: var(--ink-2); padding: 2rem 0; }
+
+/* eixos e cartoes */
+.eixo { margin-top: 2rem; }
+.eixo h2 { font-size: 1.15rem; font-weight: 700; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.6rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line); }
+.eixo h2 .n { color: var(--accent); }
+.eixo h2 small { font-family: "Source Sans 3", system-ui, sans-serif; font-weight: 400; font-size: 0.88rem; color: var(--ink-2); }
+.grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 480px), 1fr)); gap: 1rem; margin-top: 1rem; }
+
+.ind { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 1.1rem 1.2rem 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.ind header { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.7rem; }
+.ind .id { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.03em; color: var(--ink); }
+.ind .origem { font-size: 0.8rem; color: var(--ink-2); }
+.ind header .chip { margin-left: auto; }
+.ind h3 { font-size: 1.08rem; font-weight: 700; }
+.ind .desc { margin: 0; color: var(--ink-2); font-size: 0.95rem; }
+
+.formula { background: var(--formula-bg); border-radius: 6px; padding: 0.6rem 0.75rem; display: grid; gap: 0.2rem; }
+.formula span { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); }
+.formula code { font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace; font-size: 0.86rem; line-height: 1.5; color: var(--ink); white-space: normal; overflow-wrap: anywhere; }
+.formula em { font-style: normal; font-size: 0.82rem; color: var(--ink-2); }
+.formula em:empty { display: none; }
+
+dl { margin: 0; display: grid; gap: 0.35rem; }
+.kv { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.6rem; font-size: 0.92rem; }
+.kv dt { color: var(--ink-2); font-weight: 600; }
+.kv dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 460px) { .kv { grid-template-columns: 1fr; gap: 0; } }
+
+.confirmar { margin: 0; font-size: 0.86rem; background: var(--warn-bg); color: var(--warn-ink); padding: 0.4rem 0.6rem; border-radius: 6px; }
+
+.chip { display: inline-block; font-size: 0.78rem; font-weight: 700; padding: 0.12rem 0.6rem; border-radius: 999px; border: 1.5px solid currentColor; white-space: nowrap; }
+.chip.auto { color: var(--c-auto); }
+.chip.pub { color: var(--c-pub); }
+.chip.forn { color: var(--c-forn); }
+.chip.int { color: var(--c-int); }
+.chip.inf { color: var(--c-inf); }
+
+/* valores calculados */
+.anos { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 0.5rem; margin-top: 0.2rem; padding-top: 0.75rem; border-top: 1px dashed var(--line); }
+.ano { display: grid; gap: 0.15rem; align-content: start; }
+.ano .a { font-size: 0.8rem; color: var(--ink-2); font-weight: 700; display: flex; gap: 0.4rem; align-items: center; }
+.ano .parcial { font-weight: 400; font-style: italic; }
+.ano b { font-size: 1.02rem; font-weight: 700; overflow-wrap: anywhere; }
+.sit { justify-self: start; font-size: 0.74rem; font-weight: 700; padding: 0.05rem 0.45rem; border-radius: 4px; background: var(--accent-soft); color: var(--ink-2); }
+.sit.ok { background: var(--c-auto-soft); color: var(--c-auto); }
+.sit.ruim { background: var(--c-ruim-soft); color: var(--c-ruim); }
+.var { font-size: 0.78rem; color: var(--ink-2); }
+.nominal { font-size: 0.8rem; color: var(--ink-2); }
+.nominal .num { color: var(--ink); font-weight: 600; }
+.nota-ipca { margin: 0; font-size: 0.8rem; color: var(--ink-2); }
+.ind a.ficha { font-size: 0.88rem; font-weight: 600; margin-top: auto; padding-top: 0.3rem; }
+.sem { margin: 0; font-size: 0.88rem; color: var(--ink-2); font-style: italic; }
+
+footer.rodape { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.88rem; }
+footer.rodape p { margin: 0 0 0.4rem; max-width: 80ch; }
+</style>
+
+<div class="wrap">
+  <header class="topo">
+    <div class="eyebrow">Plano Diretor de Logística Sustentável · UFPB 2025–2029</div>
+    <h1>Indicadores automatizados e pendentes</h1>
+    <p class="lead">Cada indicador com sua descrição e fórmula. Os automatizados são calculados pelo painel só com dados públicos (Portal da Transparência, SIPAC, INEP, IPCA) e mostram os valores de 2023 a 2026. Os pendentes mostram o caminho para automatizar ou quem informa.</p>
+  </header>
+
+  <div class="abas" role="tablist" aria-label="Situação da automação">
+    <button type="button" role="tab" id="tab-auto" aria-controls="painel-auto" aria-selected="true">Automatizados <span class="qt">{{N_AUTO}}</span></button>
+    <button type="button" role="tab" id="tab-pend" aria-controls="painel-pend" aria-selected="false" tabindex="-1">Não automatizados <span class="qt">{{N_PEND}}</span></button>
+    <button type="button" role="tab" id="tab-vars" aria-controls="painel-vars" aria-selected="false" tabindex="-1">Variáveis <span class="qt">{{N_VARS}}</span></button>
+  </div>
+
+  <div class="ferr">
+    <label for="busca" class="eyebrow" style="position:absolute;left:-9999px">Buscar indicador</label>
+    <input id="busca" type="search" placeholder="Buscar por nome, fórmula ou responsável" autocomplete="off">
+    <div class="filtro-eixo" role="group" aria-label="Filtrar por eixo">
+      <button type="button" data-eixo="" aria-pressed="true">Todos os eixos</button>{{EIXOS}}
+    </div>
+  </div>
+
+  <div role="tabpanel" id="painel-auto" aria-labelledby="tab-auto">
+    <p class="resumo-aba"><span><b>{{N_AUTO_PLANO}}</b> dos {{N_PLANO}} indicadores do plano</span><span><b>{{N_AUTO_AMPL}}</b> ampliações propostas pelo painel</span><span>Valores de ano parcial não reprovam a meta</span></p>
+    {{AUTO}}
+  </div>
+  <div role="tabpanel" id="painel-pend" aria-labelledby="tab-pend" hidden>
+    <p class="resumo-aba">
+      <span><i class="sw" style="background:var(--c-pub)"></i><b>{{N_PUB}}</b> dado público a integrar</span>
+      <span><i class="sw" style="background:var(--c-forn)"></i><b>{{N_FORN}}</b> dado do fornecedor</span>
+      <span><i class="sw" style="background:var(--c-int)"></i><b>{{N_INT}}</b> sistema da UFPB</span>
+      <span><i class="sw" style="background:var(--c-inf)"></i><b>{{N_INF}}</b> informado pela Comissão</span>
+    </p>
+    {{PEND}}
+  </div>
+  <div role="tabpanel" id="painel-vars" aria-labelledby="tab-vars" hidden>
+    <p class="resumo-aba"><span>Os valores que entram nas contas dos indicadores automatizados, para conferência com as fontes</span><span>Anos parciais indicam quantos meses já foram carregados</span></p>
+    {{VARS}}
+  </div>
+  <p class="vazio" id="vazio" hidden>Nenhum indicador com esse filtro nesta aba.</p>
+
+  <footer class="rodape">
+    <p>Fonte: catálogo <code>ref/indicadores_pls.csv</code> e metas calculadas pelo ETL do painel (<code>pls_metas</code>), gerado em {{DATA}}. Valores em R$ corrigidos pelo IPCA; “per capita” usa a comunidade acadêmica do INEP.</p>
+    <p>Lacunas conhecidas: combustível de jun–ago/2024 sem litros no processo; copos descartáveis medidos pelo gasto (o Portal não traz a quantidade).</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var tabs = [document.getElementById("tab-auto"), document.getElementById("tab-pend"), document.getElementById("tab-vars")];
+  var paineis = {
+    "tab-auto": document.getElementById("painel-auto"),
+    "tab-pend": document.getElementById("painel-pend"),
+    "tab-vars": document.getElementById("painel-vars")
+  };
+  var ancoras = { "tab-auto": "#automatizados", "tab-pend": "#pendentes", "tab-vars": "#variaveis" };
+  var busca = document.getElementById("busca");
+  var vazio = document.getElementById("vazio");
+  var eixoAtivo = "";
+
+  function painelAtivo() {
+    for (var i = 0; i < tabs.length; i++) {
+      if (tabs[i].getAttribute("aria-selected") === "true") return paineis[tabs[i].id];
+    }
+    return paineis["tab-auto"];
+  }
+  function filtrar() {
+    var q = busca.value.trim().toLowerCase();
+    var painel = painelAtivo();
+    var total = 0;
+    painel.querySelectorAll(".eixo").forEach(function (sec) {
+      var visiveis = 0;
+      sec.querySelectorAll(".ind").forEach(function (c) {
+        // variavel usada em mais de um eixo: data-eixo="1 5"
+        var ok = (!eixoAtivo || c.dataset.eixo.split(" ").indexOf(eixoAtivo) !== -1) && (!q || c.dataset.busca.indexOf(q) !== -1);
+        c.hidden = !ok;
+        if (ok) visiveis++;
+      });
+      sec.hidden = visiveis === 0;
+      total += visiveis;
+    });
+    vazio.hidden = total > 0;
+  }
+  function selecionar(tab, foco) {
+    tabs.forEach(function (t) {
+      var sel = t === tab;
+      t.setAttribute("aria-selected", sel ? "true" : "false");
+      t.tabIndex = sel ? 0 : -1;
+      paineis[t.id].hidden = !sel;
+    });
+    if (foco) tab.focus();
+    try { history.replaceState(null, "", ancoras[tab.id]); } catch (e) {}
+    filtrar();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { selecionar(t, false); });
+    t.addEventListener("keydown", function (ev) {
+      if (ev.key === "ArrowRight" || ev.key === "ArrowLeft") {
+        ev.preventDefault();
+        var passo = ev.key === "ArrowRight" ? 1 : tabs.length - 1;
+        selecionar(tabs[(i + passo) % tabs.length], true);
+      }
+    });
+  });
+  document.querySelectorAll(".filtro-eixo button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      eixoAtivo = b.dataset.eixo;
+      document.querySelectorAll(".filtro-eixo button").forEach(function (x) {
+        x.setAttribute("aria-pressed", x === b ? "true" : "false");
+      });
+      filtrar();
+    });
+  });
+  busca.addEventListener("input", filtrar);
+  if (location.hash === "#pendentes") selecionar(tabs[1], false);
+  if (location.hash === "#variaveis") selecionar(tabs[2], false);
+})();
+</script>

@@ -1,0 +1,9 @@
+[Unit]
+Description=Dry-run do ETL PLS na vespera da carga (divergencias ficam no journald)
+
+[Timer]
+OnCalendar=*-*-09 01:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

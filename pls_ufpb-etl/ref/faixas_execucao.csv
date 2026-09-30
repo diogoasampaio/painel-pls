@@ -1,0 +1,8 @@
+codigo;faixa;alcance_minimo;ordem;descricao
+atingida;Meta atingida;100;1;Alcance de 100% da meta no ano
+proxima;Próxima da meta;75;2;Alcance de 75% a menos de 100%
+progresso;Em progresso;50;3;Alcance de 50% a menos de 75%
+distante;Distante da meta;0;4;Alcance abaixo de 50% (inclui piora em relação à referência)
+nao_avaliavel;Não avaliável no ano;;5;Tem meta e valor, mas o ano é linha de base, anterior ao plano ou parcial (sem comparação justa)
+sem_dado;Sem dado;;6;Tem meta e ainda não tem valor no ano (falta integração ou lançamento)
+sem_meta;Sem meta definida;;7;Indicador de acompanhamento: a Comissão ainda não fixou meta

@@ -1,0 +1,12 @@
+[Unit]
+Description=ETL PLS UFPB - formularios do painel -> metas e acoes (diario)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/pls-etl
+ExecStart=/opt/pls-etl/.venv/bin/python run.py diario
+EnvironmentFile=/opt/pls-etl/.env
+User=pls-etl
+TimeoutStartSec=30min

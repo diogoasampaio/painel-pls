@@ -1,0 +1,10 @@
+[Unit]
+Description=ETL PLS UFPB - dry-run de verificacao (reporta totais sem gravar)
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/pls-etl
+ExecStart=/opt/pls-etl/.venv/bin/python run.py mensal --dry-run
+EnvironmentFile=/opt/pls-etl/.env
+User=pls-etl
+TimeoutStartSec=6h

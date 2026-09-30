@@ -1,0 +1,36 @@
+arquivo;campo;tipo;obrigatorio;descricao;exemplo
+estudantes_periodo;ano;inteiro;sim;Ano do período letivo;2025
+estudantes_periodo;periodo;texto;sim;Período letivo como registrado no SIGAA (1, 2, 3, 4...). Cursos de regime anual usam 0;1
+estudantes_periodo;tipo_periodo;texto;sim;regular ou especial (período de férias ou extraordinário);regular
+estudantes_periodo;data_inicio_periodo;data;sim;Primeiro dia do período letivo (AAAA-MM-DD);2025-03-10
+estudantes_periodo;data_fim_periodo;data;sim;Último dia do período letivo (AAAA-MM-DD);2025-07-19
+estudantes_periodo;nivel;texto;sim;Nível de ensino: graduacao, especializacao, residencia_medica, residencia_multiprofissional, mestrado_academico, mestrado_profissional, doutorado, tecnico_integrado, tecnico_subsequente, tecnico_concomitante, ensino_medio, ensino_fundamental, educacao_infantil, outro;graduacao
+estudantes_periodo;codigo_curso_sigaa;inteiro;sim;Identificador do curso (ou programa, na pós-graduação) no SIGAA;1626669
+estudantes_periodo;nome_curso;texto;sim;Nome do curso ou programa;ADMINISTRAÇÃO
+estudantes_periodo;codigo_inep;inteiro;não;Código do curso no e-MEC/INEP (graduação);13395
+estudantes_periodo;codigo_capes;texto;não;Código do programa na CAPES (mestrado e doutorado);25001019001P0
+estudantes_periodo;unidade_responsavel;texto;sim;Centro ou unidade acadêmica responsável;CCSA - CENTRO DE CIÊNCIAS SOCIAIS APLICADAS
+estudantes_periodo;campus;texto;sim;Campus de oferta: I (João Pessoa), II (Areia), III (Bananeiras), IV (Litoral Norte) ou EAD;I
+estudantes_periodo;municipio_oferta;texto;sim;Município onde as aulas acontecem (no EAD, o município do polo);João Pessoa
+estudantes_periodo;modalidade;texto;sim;presencial ou distancia;presencial
+estudantes_periodo;turno;texto;não;Turno do curso (matutino, vespertino, noturno, integral...);noturno
+estudantes_periodo;qt_matriculados;inteiro;sim;Pessoas com vínculo ativo e matrícula em pelo menos um componente curricular ou atividade acadêmica (TCC, estágio, internato, dissertação, tese, prática) no período. É o critério principal de aluno;712
+estudantes_periodo;qt_ativos_sem_matricula;inteiro;sim;Pessoas com vínculo ativo e sem nenhuma matrícula no período (não trancadas);18
+estudantes_periodo;qt_trancados;inteiro;sim;Pessoas com a situação do vínculo trancada no fim do período (estoque, não só quem trancou no período);41
+estudantes_periodo;qt_mobilidade_saida;inteiro;sim;Pessoas em mobilidade ou intercâmbio fora da UFPB no período;3
+estudantes_periodo;qt_ingressantes;inteiro;sim;Pessoas que ingressaram no curso no período;90
+estudantes_periodo;qt_concluintes;inteiro;sim;Pessoas que concluíram o curso no período;35
+estudantes_periodo;qt_desvinculados;inteiro;sim;Pessoas cujo vínculo terminou sem conclusão no período (cancelamento, abandono, jubilamento, transferência);22
+estudantes_periodo;qt_alunos_especiais;inteiro;sim;Alunos especiais (sem vínculo com curso) matriculados em componentes do curso no período;4
+estudantes_periodo;ch_matriculada;inteiro;sim;Soma da carga horária (horas) dos componentes e atividades em que os matriculados estão inscritos no período. Serve para calcular o aluno equivalente em tempo integral;198400
+estudantes_periodo;data_extracao;data;sim;Data da extração no SIGAA (AAAA-MM-DD);2025-08-05
+estudantes_pessoas_ano;ano;inteiro;sim;Ano civil;2025
+estudantes_pessoas_ano;campus;texto;sim;Campus (mesma codificação acima). A pessoa conta no campus do vínculo principal;I
+estudantes_pessoas_ano;nivel_principal;texto;sim;Nível do vínculo principal da pessoa no ano (regra: o de maior nível e, em empate, o mais recente);graduacao
+estudantes_pessoas_ano;modalidade;texto;sim;presencial ou distancia (do vínculo principal);presencial
+estudantes_pessoas_ano;qt_pessoas_matriculadas_ano;inteiro;sim;Pessoas distintas matriculadas em pelo menos um componente ou atividade em algum período regular do ano (sem dupla contagem entre cursos e níveis);30112
+estudantes_pessoas_ano;qt_pessoas_por_periodo_1;inteiro;sim;Pessoas distintas matriculadas no 1º período regular do ano;28530
+estudantes_pessoas_ano;qt_pessoas_por_periodo_2;inteiro;sim;Pessoas distintas matriculadas no 2º período regular do ano;27904
+estudantes_pessoas_ano;qt_com_mais_de_um_vinculo;inteiro;sim;Pessoas matriculadas em mais de um curso ou nível no ano;215
+estudantes_pessoas_ano;qt_tambem_servidor;inteiro;sim;Pessoas matriculadas no ano que também são servidores ativos da UFPB (para não contar duas vezes na comunidade acadêmica);640
+estudantes_pessoas_ano;data_extracao;data;sim;Data da extração (AAAA-MM-DD);2026-02-10

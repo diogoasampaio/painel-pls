@@ -1,0 +1,9 @@
+[Unit]
+Description=Agenda ETL PLS UFPB (dia 10, madrugada: limite maior da API do Portal)
+
+[Timer]
+OnCalendar=*-*-10 01:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

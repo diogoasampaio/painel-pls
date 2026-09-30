@@ -1,0 +1,8 @@
+regra;tema_codigo;subtema;padrao;unidade;observacao
+papel_a4;material_consumo;Papel A4 / resmas;\bpapel\b.*\b(a4|sulfite|oficio|a3)\b|\bresmas?\b;resma;Aplicado à descrição do item de empenho (sem acento, minúsculo)
+copo_descartavel;material_consumo;Copos descartáveis;\bcopos?\b.*descart|descart.*\bcopos?\b;unidade;
+toner_cartucho;material_consumo;Toner e cartuchos;\btoner\b|\bcartuch;unidade;
+lampada_led;energia;Lâmpadas e luminárias LED;(lampada|luminaria|refletor|tubular).*\bled\b|\bled\b.*(lampada|luminaria|refletor|tubular);unidade;
+fotovoltaica;energia;Energia solar fotovoltaica;fotovolt|painel solar|placa solar|energia solar|usina solar|inversor solar|modulo solar;;
+residuos;residuos;Coleta e destinação de resíduos;residuo|coleta seletiva|coleta de lixo|compostag|catador|incinera|aterro sanitario|logistica reversa;;
+item_sustentavel;compras_sustentaveis;Item com atributo sustentável;reciclad|biodegrad|sustentav|\bfsc\b|compostav|refil;;Indicador de compra sustentável pelo texto do item

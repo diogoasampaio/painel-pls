@@ -1,0 +1,24 @@
+codigo;regra;parametro;ano_base;sentido;fundamento
+N01;reducao_anual;2,5;2024;menor;O PLS pede redução de 2,5% ao ano no consumo de energia: aplicada à intensidade (kWh/m²) a partir de 2024
+N02;reducao_vs_base;10;2024;menor;Meta do PLS (E1-AGUA-01): reduzir 10% sobre 2024
+N03;reducao_anual;2,5;2024;menor;Proposta: acompanhar o ritmo pedido para a energia (−2,5% ao ano sobre 2024), até existir o plano de redução de emissões
+N04;manter;;2024;maior;Proposta: destinar ao menos o que foi destinado em 2024 (último ano completo), até existir termo com cooperativa de recicláveis
+N05;reducao_anual;2;2024;menor;Proposta: redução de 2% ao ano em R$ corrigidos pelo IPCA sobre 2024
+N06;faixa;15;2023-2025;faixa;Proposta: ficar a até 15% da média de 2023 a 2025 (meta só de redução pode incentivar adiar manutenção)
+N07;minimo;70;;maior;Proposta: 70% (linha de base de cerca de 65% em 2023 a 2025)
+N08;minimo;5;;maior;Proposta: 5% (o PLS registrou 3,69% em 2023)
+N09;minimo;2;;maior;Proposta: 2% (linha de base de cerca de 1% em 2023 a 2025)
+N10;minimo;60;;maior;Proposta: 60% (média de cerca de 52% em 2023 a 2025)
+N11;manter;;2025;maior;Proposta: ao menos as contratações compartilhadas de 2025
+N12;manter;;2023-2025;maior;Proposta: ao menos a média de 2023 a 2025
+N13;minimo;10;;maior;Meta do PLS (E6-CAPAC-01): 10% dos servidores ao ano
+N14;manter;;2025;maior;Proposta: manter o investimento de 2025 em R$ corrigidos pelo IPCA
+N15;minimo;70;;maior;Proposta: 70% das ações iniciadas em dia ou concluídas
+N16;reducao_vs_base;30;2024;menor;Meta do PLS (E1-COPOS-01): reduzir 30% sobre 2024
+N17;manter;;2025;menor;Proposta: não passar das resmas adquiridas em 2025
+N18;manter;;2023-2025;menor;Proposta: não passar da média de cartuchos adquiridos em 2023 a 2025
+N19;reducao_anual;5;2024;menor;Meta do PLS (E1-COMBUST-01): reduzir 5% ao ano o combustível fóssil
+N20;minimo;100;;maior;Meta do PLS (E1-AVN-01): 100% das UASGs
+N21;minimo;30;;maior;Meta do PLS (E4-MARGEM-01): no mínimo 30% dos editais
+N22;minimo;80;;maior;Meta do PLS (E5-MULHERES-01): no mínimo 80% dos editais
+N23;minimo;100;;maior;Meta do PLS (E5-AGRIC-01): 100% dos editais de alimentos

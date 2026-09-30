@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.pytest_cache/
+/data/
+/logs/
+# relatorios gerados (reproduziveis com relatorios/gerar_*.py; trazem retrato dos dados da carga)
+/relatorios/*.docx
+/relatorios/*.xlsx
+/relatorios/*.html
+!/relatorios/*_template.html
+~$*

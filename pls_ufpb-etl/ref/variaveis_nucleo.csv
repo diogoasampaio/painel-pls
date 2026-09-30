@@ -1,0 +1,45 @@
+codigo;papel;variavel;descricao;base;campos
+N01;Numerador;kWh consumido;Energia medida na DANF3E de cada unidade consumidora (ou faturada, se a medição não for compatível), somada pelo mês de referência da fatura;Faturas da Energisa anexadas aos processos de pagamento (SIPAC) → pls_faturas;kwh_medido, kwh_faturado, kwh, uc, referencia, campus
+N01;Denominador;Área construída;Área construída somada das unidades dos quatro campi;Informação da UFPB (ref/area_construida.csv);campus, unidade, area_m2
+N01;Seleção;Pagamentos de energia;Pagamentos que levam ao processo com a fatura;Arquivos diários de despesas do Portal da Transparência → pls_despesas;natureza 33903943, favorecido_codigo (Energisa), observacao (número do processo)
+N02;Numerador;m³ consumido;Água medida em cada ligação (ou faturada, se houve troca de hidrômetro), somada pelo mês de referência da fatura;Faturas agrupadas da CAGEPA anexadas aos processos de pagamento (SIPAC) → pls_faturas;m3_medido, m3_faturado, m3, uc, referencia, campus
+N02;Denominador;Comunidade acadêmica;Discentes + docentes + técnicos-administrativos + terceirizados da UFPB no ano (último ano disponível quando o do ano não saiu, e Censo INEP no ano fora da planilha);Contagem da comunidade acadêmica da UFPB → ref/comunidade_ufpb.csv (reserva: Censo INEP → pls_comunidade);discentes, docentes, tecnicos, terceirizados, comunidade
+N02;Seleção;Pagamentos de água;Pagamentos que levam ao processo com a fatura;Arquivos diários de despesas do Portal → pls_despesas;natureza 33903944, favorecido_codigo (CAGEPA), observacao
+N03;Parcela;Litros por combustível;Litros abastecidos pela frota, por tipo de combustível e mês;Relatórios de abastecimento da gerenciadora de frota (SIPAC) → pls_faturas;litros, combustivel, data
+N03;Parcela;kWh da rede;Energia comprada da rede no mês;Faturas da Energisa → pls_faturas;kwh, referencia
+N03;Parcela;Distância dos trechos aéreos;Distância de grande círculo × 1,08 entre origem e destino de cada trecho aéreo realizado;Viagens a serviço do Portal da Transparência → pls_viagens, pls_trechos;meio_transporte, origem_cidade, destino_cidade, distancia_km, situacao
+N03;Parâmetro;Fatores de emissão;kg CO₂ por litro de combustível fóssil, mistura obrigatória de biocombustível do mês, fator médio do SIN (kg CO₂/kWh) do ano e kg CO₂e por passageiro-km por faixa de distância;IPCC 2006, CNPE, MCTI (SIRENE) e GHG Protocol → ref/fatores_gee.csv, ref/fatores_emissao.csv;item, inicio, fim, valor, unidade
+N03;Resultado;Emissões;kg CO₂e por mês e escopo, convertidos em toneladas;pls_indicadores;metrica emissoes_kgco2e, subtema (escopo)
+N04;Numerador;kg de resíduos;kg coletados por campus no mês, do relatório de fiscalização do contrato;Relatório de fiscalização mensal da GMA/SINFRA nos processos de pagamento (SIPAC) → pls_faturas;kg, campus, periodo, assunto_sipac
+N04;Seleção;Pagamentos da coleta;Pagamentos à empresa contratada para coleta e destinação;Arquivos diários de despesas do Portal → pls_despesas;natureza 33903978, favorecido_codigo (B-Green/Stericycle)
+N05;Numerador;R$ pagos em funcionamento;Pago + restos a pagar pagos em energia, água e esgoto, limpeza e conservação e manutenção predial, corrigidos pelo IPCA;Arquivos diários de despesas do Portal → pls_despesas, pls_indicadores;valor_pago, valor_rp_pago, natureza, subtema, valor_real
+N05;Denominador;Área construída;Área construída somada das unidades;ref/area_construida.csv;area_m2
+N05;Parâmetro;IPCA;Índice mensal para levar os valores a reais do mês de referência;IPCA (IBGE), série 433 do Banco Central → pls_ipca;periodo, indice
+N06;Numerador;R$ pagos em manutenção predial;Pago + restos a pagar pagos nas naturezas de manutenção predial, corrigidos pelo IPCA;Arquivos diários de despesas do Portal → pls_despesas, pls_indicadores;valor_pago, valor_rp_pago, natureza, tema_codigo manutencao_predial, valor_real
+N06;Denominador;Área construída;Área construída somada das unidades;ref/area_construida.csv;area_m2
+N06;Parâmetro;IPCA;Índice mensal de correção;pls_ipca;periodo, indice
+N07;Numerador;Litros menos poluentes;Litros de etanol + diesel S10 abastecidos no ano;Relatórios de abastecimento da gerenciadora de frota → pls_faturas, pls_indicadores;litros, combustivel, combustivel_texto, subtema (Frota - etanol, Frota - diesel S10)
+N07;Denominador;Litros totais;Litros de diesel S10 + diesel comum + gasolina + etanol;Mesma base;litros, subtema (Frota - …)
+N08;Numerador;kWh gerado nas usinas próprias;Energia produzida pelas usinas fotovoltaicas e consumida nos campi;Monitoramento dos inversores (SINFRA) — ainda não integrado;informado pelo setor
+N08;Denominador;kWh consumido total;kWh da rede (faturas) + kWh gerado nas usinas;Faturas da Energisa → pls_faturas + monitoramento das usinas;kwh
+N09;Numerador;R$ empenhados em itens sustentáveis;Valor dos itens de material de consumo cuja descrição casa a regra de atributo sustentável;Itens das notas de empenho do Portal → pls_itens_empenho;descricao, valor, natureza 3.3.90.30, regras_texto
+N09;Denominador;R$ empenhados em material de consumo;Valor de todos os itens de material de consumo empenhados no ano;Mesma base;valor, natureza 3.3.90.30
+N09;Parâmetro;Regra de texto;Expressão regular de atributo sustentável aplicada à descrição normalizada;ref/regras_texto_pls.csv;regra, subtema, padrao
+N10;Numerador;Contratações com critério específico;Licitações e dispensas com critério de sustentabilidade concreto e obrigatório no edital ou TR (fora do ETP);Documentos das contratações no PNCP (texto lido pelo painel) → pls_compras;nivel_sustentabilidade = especifico, criterios, trechos
+N10;Denominador;Contratações com documento legível;Licitações e dispensas com edital/TR com texto (sai quem não tem documento ou tem PDF escaneado);Lista do Compras.gov.br + PNCP → pls_compras;modalidade, nivel_sustentabilidade, leitura, documentos_lidos
+N10;Parâmetro;Critérios;Expressões dos critérios específicos e genéricos, e das frases de preferência;ref/criterios_editais.csv;marcador, nivel, onde, padrao
+N10;Variante;Valor;A mesma razão em R$ homologados (ou estimados) — A4-CONTR-SUST-VALOR;pls_compras;valor_homologado, valor_estimado
+N11;Contagem;IRP com participante externo;Ata de registro de preços da UFPB com unidade participante de outro órgão;Compras.gov.br, módulo ARP → pls_compras_compartilhadas;tipo, referencia, orgao_cnpj
+N11;Contagem;Adesão externa a ata da UFPB;Ata da UFPB com adesão (carona) de outro órgão;Compras.gov.br, módulo ARP (adesões);tipo, referencia, data
+N11;Contagem;Participação da UFPB em compra de outro órgão;Contrato ou empenho da UFPB cuja compra de origem é de outro CNPJ;PNCP, contratos → pls_compras_compartilhadas;compra, orgao_cnpj, data
+N12;Numerador;R$ pagos a negócios de impacto;Pagamentos a ME/EPP (qualquer UF), a demais portes da Paraíba e à agricultura familiar;Pagamentos do Portal × cadastro de CNPJ da Receita → pls_pagamentos_pj;valor, subtema, cnpj
+N12;Denominador;R$ pagos a pessoas jurídicas;Todos os pagamentos a CNPJ em aplicação direta nos elementos de contratação, exceto instituição financeira;pls_pagamentos_pj;valor, natureza (elementos 30, 32, 33, 35, 37, 39, 40, 51, 52)
+N12;Classificação;Porte e UF;Porte da empresa (01 ME, 03 EPP) e UF do estabelecimento que recebeu;Cadastro Nacional da Pessoa Jurídica (Receita Federal) → pls_fornecedores;porte, uf, cnae_principal, me_epp, sede_local, no_cadastro
+N13;Numerador;Pessoas capacitadas;Pessoas distintas que declaram a UFPB e concluíram no ano ao menos um curso de sustentabilidade;Escola Virtual de Governo (ENAP) → pls_evg;pessoa (código anonimizado), sit_matricula, nome_curso, concluida, sustentabilidade, data
+N13;Denominador;Servidores;Docentes + técnicos-administrativos da UFPB no ano (sem terceirizados);Contagem da comunidade acadêmica da UFPB → ref/comunidade_ufpb.csv (reserva: Censo INEP);docentes, tecnicos
+N13;Parâmetro;Cursos de sustentabilidade;Palavras-chave no nome do curso;ref/evg_sustentabilidade.csv;campo, padrao
+N14;Valor;R$ pagos na ação 4572;Pago + restos a pagar pagos de empenhos da ação 4572 (qualquer natureza), corrigidos pelo IPCA;Arquivos diários de despesas do Portal → pls_despesas;acao, valor_pago, valor_rp_pago, empenho
+N14;Parâmetro;IPCA;Índice mensal de correção;pls_ipca;periodo, indice
+N15;Numerador;Ações no prazo;Ações concluídas, contínuas em dia ou em andamento dentro do prazo (com evidência quando exigida);Plano de ações (ref/acoes_pls_ufpb.csv) + acompanhamento dos setores → pls_acoes;situacao, sem_evidencia, verificada_painel
+N15;Denominador;Ações exigíveis;Ações com início já alcançado, exceto suspensas e canceladas;pls_acoes;inicio, fim, tipo, exigivel
+N15;Entrada;Acompanhamento semestral;Situação, percentual, evidência, justificativa, facilitadores, dificuldades e ajuste de cada ação no ciclo;Formulário do painel → data/metas/acompanhamento_acoes.csv;acao_id, ciclo, situacao, percentual, evidencia

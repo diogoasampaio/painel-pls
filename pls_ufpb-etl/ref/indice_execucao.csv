@@ -1,0 +1,5 @@
+parametro;valor;descricao
+peso_metas;0.5;Peso do componente de alcance das metas dos indicadores no índice sintético
+peso_acoes;0.5;Peso do componente de cumprimento do plano de ações (N15) no índice sintético
+agregacao_metas;eixo;eixo = média simples dos eixos (cada eixo pesa igual, mesmo com número diferente de indicadores), ou indicador = média simples de todos os indicadores
+primeiro_ano;2025;Primeiro ano do plano (PLS UFPB 2025-2029), anos anteriores não entram no índice

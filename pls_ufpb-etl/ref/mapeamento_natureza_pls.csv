@@ -1,0 +1,27 @@
+natureza;descricao_natureza;tema_codigo;subtema;indicador_sugerido;confianca;observacao
+33903016;Material de expediente;material_consumo;Papel e material de expediente;Gasto com expediente por pessoa e resmas adquiridas (itens de empenho);confirmado;
+33903017;Material de processamento de dados;material_consumo;Cartuchos, toner e suprimentos de TI;Gasto com suprimentos de impressão;confirmado;
+33903021;Material de copa e cozinha;material_consumo;Copa e cozinha (copos descartáveis);Copos descartáveis adquiridos (itens de empenho);confirmado;
+33903022;Material de limpeza e produtos de higienização;material_consumo;Material de limpeza e higienização;Gasto com material de limpeza por m²;confirmado;
+33903963;Serviços gráficos e editoriais;material_consumo;Impressão e serviços gráficos;Gasto com serviços gráficos;confirmado;
+33904016;Outsourcing de impressão;material_consumo;Impressão e serviços gráficos;Gasto com outsourcing de impressão;conferir;Subitem do elemento 40 (TIC) - conferir na tabela de natureza vigente
+33903943;Serviços de energia elétrica;energia;Fatura de energia elétrica;Gasto com energia por pessoa e por m² (deflacionado);confirmado;
+33903026;Material elétrico e eletrônico;energia;Material elétrico (lâmpadas);Gasto com material elétrico e lâmpadas LED (itens de empenho);confirmado;
+33903944;Serviços de água e esgoto;agua_esgoto;Fatura de água e esgoto;Gasto com água por pessoa (deflacionado);confirmado;
+33903702;Limpeza e conservação (locação de mão de obra);contratacoes;Limpeza e conservação;Gasto com limpeza por m²;confirmado;
+33903978;Limpeza e conservação (serviço);contratacoes;Limpeza e conservação;Gasto com limpeza por m²;conferir;
+33903704;Manutenção e conservação de bens imóveis (mão de obra);manutencao_predial;Manutenção predial;Gasto com manutenção predial;conferir;
+33903916;Manutenção e conservação de bens imóveis;manutencao_predial;Manutenção predial;Gasto com manutenção predial;confirmado;
+33903024;Material para manutenção de bens imóveis;manutencao_predial;Manutenção predial;Gasto com material de manutenção predial;confirmado;
+33903958;Serviços de telecomunicações;contratacoes;Telecomunicações;Gasto com telefonia e dados;confirmado;
+33904014;Telefonia fixa e móvel - pacote de comunicação de dados;contratacoes;Telecomunicações;Gasto com telefonia e dados;conferir;Subitem do elemento 40 (TIC) - conferir na tabela de natureza vigente
+33903007;Gêneros de alimentação;contratacoes;Gêneros alimentícios;Gasto com gêneros alimentícios (base para agricultura familiar);confirmado;
+339014;Diárias - civil (todos os subitens);deslocamento;Diárias;Gasto com diárias por servidor;confirmado;Prefixo de elemento: vale para todos os subitens
+339033;Passagens e despesas com locomoção (todos os subitens);deslocamento;Passagens e locomoção;Gasto com passagens e viagens aéreas;confirmado;Prefixo de elemento: vale para todos os subitens
+33903001;Combustíveis e lubrificantes automotivos;deslocamento;Frota - combustível;Gasto com combustível;confirmado;
+33903039;Material para manutenção de veículos;deslocamento;Frota - manutenção;Gasto com manutenção de frota;confirmado;
+33903919;Manutenção e conservação de veículos;deslocamento;Frota - manutenção;Gasto com manutenção de frota;confirmado;
+33903701;Apoio administrativo, técnico e operacional (locação de mão de obra);contratacoes;Apoio administrativo terceirizado;Gasto com mão de obra terceirizada de apoio;conferir;Incluída a partir das naturezas sem tema de jan/2025 (R$ 1,34 mi pagos)
+33903941;Fornecimento de alimentação;contratacoes;Fornecimento de alimentação (Restaurante Universitário);Gasto com alimentação e base para agricultura familiar;conferir;Incluída a partir das naturezas sem tema de jan/2025 (R$ 1,07 mi pagos)
+33903977;Vigilância ostensiva/monitorada;contratacoes;Vigilância;Gasto com vigilância por m²;conferir;Incluída a partir das naturezas sem tema de jan/2025 (R$ 247 mil pagos)
+33903948;Serviços de seleção e treinamento;capacitacao;Cursos e treinamentos;Gasto com capacitação (contexto do Eixo 6);conferir;Treinamento em geral, não só sustentabilidade

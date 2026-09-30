@@ -1,0 +1,13 @@
+item;inicio;fim;valor;unidade;fonte
+diesel_a_co2;2000-01;2099-12;2.677;kg CO2 por litro de diesel A (fóssil);IPCC 2006 vol. 2 cap. 3 (74.100 kg CO2/TJ e PCI 43,0 TJ/Gg) com densidade 0,84 kg/L
+gasolina_a_co2;2000-01;2099-12;2.278;kg CO2 por litro de gasolina A (fóssil);IPCC 2006 vol. 2 cap. 3 (69.300 kg CO2/TJ e PCI 44,3 TJ/Gg) com densidade 0,742 kg/L
+etanol_co2;2000-01;2099-12;0;kg CO2 fóssil por litro de etanol hidratado;CO2 da biomassa é biogênico (GHG Protocol: reportado à parte, fora do escopo 1)
+biodiesel_no_diesel;2022-01;2023-03;0.10;fração de biodiesel no diesel B;Mistura obrigatória B10 (CNPE)
+biodiesel_no_diesel;2023-04;2024-02;0.12;fração de biodiesel no diesel B;Mistura obrigatória B12 a partir de abril de 2023 (CNPE)
+biodiesel_no_diesel;2024-03;2025-07;0.14;fração de biodiesel no diesel B;Mistura obrigatória B14 a partir de março de 2024 (CNPE)
+biodiesel_no_diesel;2025-08;2099-12;0.15;fração de biodiesel no diesel B;Mistura obrigatória B15 a partir de agosto de 2025 (CNPE)
+etanol_na_gasolina;2015-03;2025-07;0.27;fração de etanol anidro na gasolina C;Mistura obrigatória E27 (Portaria MAPA 75/2015)
+etanol_na_gasolina;2025-08;2099-12;0.30;fração de etanol anidro na gasolina C;Mistura obrigatória E30 a partir de agosto de 2025 (Lei 14.993/2024 e CNPE)
+energia_sin;2023-01;2023-12;0.0385;t CO2 por MWh consumido da rede (SIN);MCTI, fator médio anual 2023. Reserva: o painel usa o fator MENSAL do módulo fator_sin
+energia_sin;2024-01;2024-12;0.0545;t CO2 por MWh consumido da rede (SIN);MCTI, fator médio anual 2024 (planilha Inventários Corporativos). Reserva do fator mensal
+energia_sin;2025-01;2025-12;0.0461;t CO2 por MWh consumido da rede (SIN);MCTI, fator médio anual 2025 (planilha Inventários Corporativos). Reserva do fator mensal

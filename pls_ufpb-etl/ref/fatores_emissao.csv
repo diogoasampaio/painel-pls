@@ -1,0 +1,4 @@
+meio;faixa_min_km;faixa_max_km;kg_co2e_por_pkm;fonte
+aereo;0;500;0.120398;Programa Brasileiro GHG Protocol, ferramenta v2022.1.1, Tabela 12 (aviação civil - passageiros, DEFRA, CO2+CH4+N2O, GWP AR4, sem forçamento radiativo), dividido por 1,08 porque o ETL já aplica o acréscimo de rota
+aereo;500;3700;0.075157;Programa Brasileiro GHG Protocol, ferramenta v2022.1.1, Tabela 12 (aviação civil - passageiros, DEFRA, CO2+CH4+N2O, GWP AR4, sem forçamento radiativo), dividido por 1,08 porque o ETL já aplica o acréscimo de rota
+aereo;3700;99999;0.094519;Programa Brasileiro GHG Protocol, ferramenta v2022.1.1, Tabela 12 (aviação civil - passageiros, DEFRA, CO2+CH4+N2O, GWP AR4, sem forçamento radiativo), dividido por 1,08 porque o ETL já aplica o acréscimo de rota
